@@ -29,7 +29,7 @@ models/
 
 # Python
 venv/
-env/
+
 __pycache__/
 *.pyc
 *.pyo
