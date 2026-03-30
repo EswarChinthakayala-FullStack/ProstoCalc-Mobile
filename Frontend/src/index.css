@@ -1,0 +1,191 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --radius-2xl: calc(var(--radius) + 8px);
+    --radius-3xl: calc(var(--radius) + 12px);
+    --radius-4xl: calc(var(--radius) + 16px);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    --breakpoint-xs: 480px;
+}
+
+:root {
+    --radius: 0.75rem;
+    --background: #F8FAFC;      /* Very light blue-ish slate */
+    --foreground: #0F172A;
+    --card: #FFFFFF;
+    --card-foreground: #0F172A;
+    --popover: #FFFFFF;
+    --popover-foreground: #0F172A;
+    --primary: #2563EB;         /* Patient Blue */
+    --primary-foreground: #FFFFFF;
+    --secondary: #EFF6FF;       /* Light blue secondary */
+    --secondary-foreground: #1E40AF;
+    --muted: #F1F5F9;
+    --muted-foreground: #64748B;
+    --accent: #DBEAFE;          /* Blue accent */
+    --accent-foreground: #1E40AF;
+    --destructive: #EF4444;
+    --border: #E2E8F0;
+    --input: #E2E8F0;
+    --ring: #3B82F6;
+
+    /* Medical Brand Colors */
+    --dental-dark-blue: #0D2659;
+    --dental-light-blue: #2563EB;
+    --dental-cyan: #0EA5E9;
+    --dental-gradient: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+    --dental-soft-gradient: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+}
+
+.dark {
+    --background: #000000;      /* Pure black background */
+    --foreground: #FAFAFA;      /* Zinc-50 foreground */
+    --card: #09090B;           /* Zinc-950 cards */
+    --card-foreground: #FAFAFA;
+    --popover: #09090B;
+    --popover-foreground: #FAFAFA;
+    --primary: #FFFFFF;        /* White primary on black */
+    --primary-foreground: #000000;
+    --secondary: #18181B;      /* Zinc-900 secondary */
+    --secondary-foreground: #FAFAFA;
+    --muted: #18181B;
+    --muted-foreground: #A1A1AA; /* Zinc-400 muted text */
+    --accent: #27272A;         /* Zinc-800 accent/hover */
+    --accent-foreground: #FAFAFA;
+    --destructive: #7F1D1D;
+    --border: #27272A;         /* Zinc-800 borders */
+    --input: #27272A;
+    --ring: #D4D4D8;           /* Zinc-300 ring */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+  }
+  .maplibregl-popup-content {
+    @apply bg-transparent! shadow-none! p-0! rounded-none!;
+    }
+  .maplibregl-popup-tip {
+    @apply hidden!;
+    }
+}
+
+/* ═══ CUSTOM SCROLLBAR ═══ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1; /* Slate-300 */
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8; /* Slate-400 */
+  background-clip: content-box;
+}
+
+/* For Gallery Horizontal Scroll (Thinner) */
+.snap-x::-webkit-scrollbar {
+  height: 6px;
+}
+
+.snap-x::-webkit-scrollbar-thumb {
+  background: #40A6F2; /* Light Blue */
+  background-clip: content-box;
+}
+
+.snap-x::-webkit-scrollbar-thumb:hover {
+  background: #0D2659; /* Dark Blue */
+  background-clip: content-box;
+}
+
+/* Thin scrollbar utility */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 5px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+.scrollbar-thumb-slate-200::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+}
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(0.98); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s infinite ease-in-out;
+}

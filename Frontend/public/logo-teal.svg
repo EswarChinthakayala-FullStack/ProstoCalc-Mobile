@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="molarTealGradient" x1="40" y1="40" x2="216" y2="216">
+      <stop offset="0%" stop-color="#0D9488"/>
+      <stop offset="100%" stop-color="#2DD4BF"/>
+    </linearGradient>
+    <filter id="softTealShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#134E4A" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Container for Shadow -->
+  <g filter="url(#softTealShadow)">
+    <!-- Molar Tooth Shape -->
+    <path d="M60 70C60 50 80 40 128 40C176 40 196 50 196 70V140C196 170 176 216 160 216C144 216 136 190 128 190C120 190 112 216 96 216C80 216 60 170 60 140V70Z" fill="url(#molarTealGradient)"/>
+    
+    <!-- Calculator/Data Grid Overlay -->
+    <g transform="translate(93, 80)">
+      <!-- Top display bar -->
+      <rect width="70" height="15" rx="3" fill="white" fill-opacity="0.9"/>
+      <!-- Grid of dots/buttons -->
+      <circle cx="10" cy="35" r="6" fill="white" fill-opacity="0.8"/>
+      <circle cx="35" cy="35" r="6" fill="white" fill-opacity="0.8"/>
+      <circle cx="60" cy="35" r="6" fill="white" fill-opacity="0.8"/>
+      
+      <circle cx="10" cy="62" r="6" fill="white" fill-opacity="0.8"/>
+      <circle cx="35" cy="62" r="6" fill="white" fill-opacity="0.8"/>
+      <circle cx="60" cy="62" r="6" fill="white" fill-opacity="0.8"/>
+      
+      <circle cx="10" cy="89" r="6" fill="white" fill-opacity="0.8"/>
+      <circle cx="35" cy="89" r="6" fill="white" fill-opacity="0.8"/>
+      <circle cx="60" cy="89" r="6" fill="white" fill-opacity="0.8"/>
+    </g>
+    
+    <!-- Shiny Reflection -->
+    <path d="M75 60C75 55 85 50 100 50" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+  </g>
+  
+  <!-- Plus Sign for "Calc/Medical" -->
+  <path d="M220 40V70M205 55H235" stroke="#FACC15" stroke-width="10" stroke-linecap="round"/>
+</svg>

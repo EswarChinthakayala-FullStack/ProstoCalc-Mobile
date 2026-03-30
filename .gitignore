@@ -1,0 +1,35 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcuserstate
+*.xcresult/
+
+# Node.js
+node_modules/
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# AI Models (Avoid pushing 1GB+ files)
+models/
+*.onnx
+*.mlmodelc
+*.mlpackage
+*.mlmodel
+
+# Logs
+*.log
+
+# Python
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo

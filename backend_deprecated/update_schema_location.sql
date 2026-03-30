@@ -1,0 +1,2 @@
+ALTER TABLE patients ADD COLUMN latitude DECIMAL(10, 8) NULL;
+ALTER TABLE patients ADD COLUMN longitude DECIMAL(11, 8) NULL;

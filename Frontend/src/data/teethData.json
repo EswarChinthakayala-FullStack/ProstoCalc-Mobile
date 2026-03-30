@@ -1,0 +1,268 @@
+{
+  "dentition_metadata": {
+    "type": "Permanent (Adult)",
+    "total_teeth": 32,
+    "system": "Universal Numbering System",
+    "clinical_note": "Optimal oral health requires a synergistic approach between mechanical cleaning and pH-balanced nutrition."
+  },
+  "individual_tooth_data": [
+    {
+      "id": 1,
+      "name": "Upper Right 3rd Molar (Wisdom Tooth)",
+      "type": "Molar",
+      "description": "The posterior-most tooth in the upper right quadrant. Often vestigial with variable root morphology.",
+      "function": "Grinding fibrous plant material and tough proteins.",
+      "precautions": "Extremely difficult to clean; high risk of pericoronitis (gum infection) and distal caries on adjacent Tooth #2.",
+      "brushing_protocol": "Requires a slim-headed brush or end-tuft brush. Angulate 45 degrees toward the gum line for 8-10 seconds.",
+      "dietary_advice": "Avoid sticky candies (taffy/caramel) which are impossible to clear from this depth."
+    },
+    {
+      "id": 2,
+      "name": "Upper Right 2nd Molar",
+      "type": "Molar",
+      "description": "Large multi-cusp tooth assisting the 1st molar in heavy mastication.",
+      "function": "Pulverizing food into digestible particles.",
+      "precautions": "Deep occlusal pits are magnets for bacterial biofilm. Check for sealant integrity.",
+      "brushing_protocol": "Focus on the buccal (cheek) side where the parotid gland releases saliva, leading to faster tartar buildup.",
+      "dietary_advice": "High-fiber vegetables (carrots, celery) help naturally scrub the chewing surface."
+    },
+    {
+      "id": 3,
+      "name": "Upper Right 1st Molar (6-Year Molar)",
+      "type": "Molar",
+      "description": "The largest tooth in the upper right arch; typically possesses three roots for maximum stability.",
+      "function": "Primary anchor of the bite; bears the highest force during chewing.",
+      "precautions": "Commonly the first permanent tooth to require a filling. Watch for 'vertical fracture syndrome'.",
+      "brushing_protocol": "Apply moderate pressure on the occlusal surface. Ensure the brush reaches the 'furcation' (where roots meet) if gums have recessed.",
+      "dietary_advice": "Calcium-rich dairy (cheese/yogurt) to support the massive enamel surface area."
+    },
+    {
+      "id": 4,
+      "name": "Upper Right 2nd Premolar",
+      "type": "Bicuspid",
+      "description": "Transition tooth with two cusps; slightly smaller than the 1st molar.",
+      "function": "Tearing and crushing food items.",
+      "precautions": "The 'contact point' between #4 and #5 is a frequent site for 'hidden' cavities.",
+      "brushing_protocol": "Use a back-and-forth vibrating motion (Bass Technique) to clean the interproximal spaces.",
+      "dietary_advice": "Limit refined carbohydrates (crackers/breads) which stick in the grooves."
+    },
+    {
+      "id": 5,
+      "name": "Upper Right 1st Premolar",
+      "type": "Bicuspid",
+      "description": "Distinctive two-cusp tooth, often having a bifurcated root (two root tips).",
+      "function": "Initial crushing; supports the canine in tearing.",
+      "precautions": "The mesial (front) surface has a natural concavity that is very hard to floss properly.",
+      "brushing_protocol": "Focus on the transition from the canine to the premolar; don't skip the 'corner' of the arch.",
+      "dietary_advice": "Vitamin C-rich foods (bell peppers/broccoli) to keep the supporting periodontal ligaments strong."
+    },
+    {
+      "id": 6,
+      "name": "Upper Right Canine",
+      "type": "Cuspid",
+      "description": "The longest tooth in the human mouth; the 'cornerstone' of the dental arch.",
+      "function": "Shearing food and guiding the jaw during side-to-side movement.",
+      "precautions": "Highly susceptible to 'abfraction' (notches at the gum line) due to heavy bite forces.",
+      "brushing_protocol": "Avoid aggressive horizontal scrubbing. Use soft circular motions to prevent gum recession.",
+      "dietary_advice": "Apples and firm fruits are excellent for stimulating the long root through 'functional loading'."
+    },
+    {
+      "id": 7,
+      "name": "Upper Right Lateral Incisor",
+      "type": "Incisor",
+      "description": "Smaller cutting tooth adjacent to the central incisor.",
+      "function": "Cutting food; crucial for phonetics (specifically the 'S' sound).",
+      "precautions": "Often has a 'lingual pit' on the back side where cavities form unnoticed.",
+      "brushing_protocol": "Brush the back (lingual) side vertically with the tip of the toothbrush.",
+      "dietary_advice": "Avoid biting directly into ice or hard hard candies; this tooth is prone to fracture."
+    },
+    {
+      "id": 8,
+      "name": "Upper Right Central Incisor",
+      "type": "Incisor",
+      "description": "The most visible tooth in the smile; chisel-shaped with a broad biting edge.",
+      "function": "Incising (cutting) food and supporting the upper lip for facial aesthetics.",
+      "precautions": "Most common tooth to be fractured in sports. Enamel is thin at the incisal edge.",
+      "brushing_protocol": "Gentle vertical strokes. Over-brushing here leads to 'black triangles' (loss of gum between teeth).",
+      "dietary_advice": "Minimize dark liquids (coffee/red wine) as these teeth stain the most noticeably."
+    },
+    {
+      "id": 9,
+      "name": "Upper Left Central Incisor",
+      "type": "Incisor",
+      "description": "Mirror image of #8. The focal point of dental symmetry.",
+      "function": "Cutting food and speech articulation.",
+      "precautions": "Avoid using to tear open packaging or hold metal objects (pins/needles).",
+      "brushing_protocol": "Ensure the 'sulcus' (where tooth meets gum) is cleared of plaque daily.",
+      "dietary_advice": "Drink water after consuming berries to prevent extrinsic staining."
+    },
+    {
+      "id": 10,
+      "name": "Upper Left Lateral Incisor",
+      "type": "Incisor",
+      "description": "Mirror image of #7.",
+      "function": "Cutting and aesthetic framing.",
+      "precautions": "Check for 'peg lateral' (undersized) development which may require restorative care.",
+      "brushing_protocol": "Vertical brush orientation for the lingual surface.",
+      "dietary_advice": "Raw nuts provide good resistance, but chew with molars, not incisors."
+    },
+    {
+      "id": 11,
+      "name": "Upper Left Canine",
+      "type": "Cuspid",
+      "description": "Mirror image of #6.",
+      "function": "Tearing and jaw guidance.",
+      "precautions": "The 'cusp tip' can wear down if the patient suffers from night grinding (bruxism).",
+      "brushing_protocol": "Use a soft-bristled brush. Spend 10 seconds specifically on the gum line.",
+      "dietary_advice": "Leafy greens provide Vitamin K, essential for bone density around the long root."
+    },
+    {
+      "id": 12,
+      "name": "Upper Left 1st Premolar",
+      "type": "Bicuspid",
+      "description": "Mirror image of #5.",
+      "function": "Tearing and crushing.",
+      "precautions": "Root canal anatomy here is often complex; avoid deep decay at all costs.",
+      "brushing_protocol": "Sweep from the gum toward the biting edge (The Modified Stillman technique).",
+      "dietary_advice": "Lean proteins provide phosphorus, which works with calcium to protect enamel."
+    },
+    {
+      "id": 13,
+      "name": "Upper Left 2nd Premolar",
+      "type": "Bicuspid",
+      "description": "Mirror image of #4.",
+      "function": "Crushing and grinding.",
+      "precautions": "Vulnerable to 'interproximal' decay—decay between teeth that only X-rays can see.",
+      "brushing_protocol": "Requires daily flossing to reach the 40% of the tooth a brush misses.",
+      "dietary_advice": "Avoid frequent 'grazing' on dried fruits (raisins/dates) which are high in sugar and sticky."
+    },
+    {
+      "id": 14,
+      "name": "Upper Left 1st Molar",
+      "type": "Molar",
+      "description": "Mirror image of #3. Known as a 'cornerstone' of the arch.",
+      "function": "Heavy chewing and maintaining facial height.",
+      "precautions": "Often has a 'Cusp of Carabelli' (an extra small cusp) that can trap plaque.",
+      "brushing_protocol": "Use a power brush if possible for 10-15 seconds to ensure the deep grooves are vibrating clean.",
+      "dietary_advice": "Sugar-free gum with Xylitol after meals to stimulate saliva and neutralize acids."
+    },
+    {
+      "id": 15,
+      "name": "Upper Left 2nd Molar",
+      "type": "Molar",
+      "description": "Mirror image of #2.",
+      "function": "Secondary grinding.",
+      "precautions": "Proximity to the sinus cavity means toothaches here can sometimes be sinus infections.",
+      "brushing_protocol": "Close your mouth slightly while brushing here to relax the cheek muscle for better access.",
+      "dietary_advice": "Green tea (unsweetened) contains polyphenols that inhibit cavity-causing bacteria."
+    },
+    {
+      "id": 16,
+      "name": "Upper Left 3rd Molar (Wisdom Tooth)",
+      "type": "Molar",
+      "description": "Mirror image of #1.",
+      "function": "Grinding.",
+      "precautions": "Check for 'partial eruption' which allows bacteria to enter under the gum flap.",
+      "brushing_protocol": "Ensure you reach the very back surface (the 'distal' face).",
+      "dietary_advice": "Avoid carbonated beverages which pool in the back of the mouth and erode the enamel."
+    },
+    {
+      "id": 17,
+      "name": "Lower Left 3rd Molar (Wisdom Tooth)",
+      "type": "Molar",
+      "description": "Located in the lower left jaw; frequently impacted due to lack of space in the mandible.",
+      "function": "Grinding.",
+      "precautions": "Highly prone to gum disease due to the 'pocket' created between it and the jawbone.",
+      "brushing_protocol": "Wiggle the brush bristles under the gum flap if the tooth is partially out.",
+      "dietary_advice": "Soft foods if the area is inflamed; avoid popcorn kernels which can get stuck in wisdom pockets."
+    },
+    {
+      "id": 18,
+      "name": "Lower Left 2nd Molar",
+      "type": "Molar",
+      "description": "A sturdy four-cusp molar in the lower jaw.",
+      "function": "Grinding and pulverizing.",
+      "precautions": "Gravity allows food debris to settle here more than in upper teeth.",
+      "brushing_protocol": "Focus heavily on the occlusal (top) grooves for 10 seconds.",
+      "dietary_advice": "Whole grains provide B-vitamins for healthy gum tissue around the molars."
+    },
+    {
+      "id": 19,
+      "name": "Lower Left 1st Molar",
+      "type": "Molar",
+      "description": "One of the most important teeth for functional chewing; often the most restored tooth in adults.",
+      "function": "Primary grinding force of the lower jaw.",
+      "precautions": "Check for 'furcation' involvement (bone loss between the two roots).",
+      "brushing_protocol": "Use an electric toothbrush with a pressure sensor to avoid damaging the gums.",
+      "dietary_advice": "Limit acidic soda intake; the lower 1st molar is often 'bathed' in acid during swallowing."
+    },
+    {
+      "id": 20,
+      "name": "Lower Left 2nd Premolar",
+      "type": "Bicuspid",
+      "description": "A robust premolar with a more circular shape than the upper premolars.",
+      "function": "Crushing and holding food.",
+      "precautions": "The mental foramen (nerve opening) is nearby; sensitivity here should be checked by a pro.",
+      "brushing_protocol": "Angle bristles 45 degrees toward the tongue-side (lingual) to remove sub-gingival plaque.",
+      "dietary_advice": "Crunchy vegetables (like peppers) help stimulate the jaw bone."
+    },
+    {
+      "id": 21,
+      "name": "Lower Left 1st Premolar",
+      "type": "Bicuspid",
+      "description": "A small premolar that looks somewhat like a canine from the front.",
+      "function": "Tearing and crushing.",
+      "precautions": "Prone to 'abfraction' lesions (notches) at the gum line due to clenching.",
+      "brushing_protocol": "Use a 'sweep' motion from the gum line upward.",
+      "dietary_advice": "Almonds provide magnesium, which is vital for maintaining the tooth-to-bone bond."
+    },
+    {
+      "id": 22,
+      "name": "Lower Left Canine",
+      "type": "Cuspid",
+      "description": "A long-rooted, powerful tooth at the corner of the lower arch.",
+      "function": "Tearing and protecting the back teeth during jaw movement.",
+      "precautions": "Watch for 'recession' on the cheek side due to the thinness of the bone over the root.",
+      "brushing_protocol": "Be very gentle on the outer surface; avoid hard-bristled brushes.",
+      "dietary_advice": "Strawberries contain malic acid, which can naturally help keep the surface clean (but rinse after!)."
+    },
+    {
+      "id": 23,
+      "name": "Lower Left Lateral Incisor",
+      "type": "Incisor",
+      "description": "Narrow cutting tooth in the lower front.",
+      "function": "Cutting food and speech.",
+      "precautions": "Lower incisors are the first place 'Calculus' (tartar) forms because of the salivary glands nearby.",
+      "brushing_protocol": "Spend extra time on the lingual (tongue-side) where hard deposits form.",
+      "dietary_advice": "Limit starchy snacks (chips) which turn into glue-like plaque on front teeth."
+    },
+    {
+      "id": 24,
+      "name": "Lower Left Central Incisor",
+      "type": "Incisor",
+      "description": "Smallest tooth in the human body; very narrow and chisel-shaped.",
+      "function": "Initial biting and speech (the 'TH' sound).",
+      "precautions": "Extremely prone to crowding, which makes cleaning between them nearly impossible without floss.",
+      "brushing_protocol": "Use 'Water-flossing' or interdental brushes if these teeth are crowded.",
+      "dietary_advice": "Drink water after every meal to flush the 'lower pool' of the mouth."
+    },
+    {
+      "id": 25,
+      "name": "Lower Right Central Incisor",
+      "type": "Incisor",
+      "description": "Mirror image of #24.",
+      "function": "Biting and speech.",
+      "precautions": "Bone around these roots is very thin; avoid tobacco products which cause rapid bone loss here.",
+      "brushing_protocol": "Use the 'tip' of the brush for the back side; avoid a horizontal 'sawing' motion.",
+      "dietary_advice": "Vitamin D supplements or sun exposure to ensure the thin bone stays dense."
+    },
+    {
+      "id": 26, "name": "Lower Right Lateral Incisor", "type": "Incisor", "description": "Mirror image of #23.", "function": "Cutting.", "precautions": "Calculus buildup can lead to 'recession' and eventually tooth loss.", "brushing_protocol": "Floss daily—no exceptions for lower incisors.", "dietary_advice": "Onions and garlic have antimicrobial properties that help reduce plaque bacteria." },
+    { "id": 27, "name": "Lower Right Canine", "type": "Cuspid", "description": "Mirror image of #22.", "function": "Tearing.", "precautions": "If you grind your teeth, the tip of this tooth will flatten first.", "brushing_protocol": "Soft circular motions for 10 seconds.", "dietary_advice": "Tougher textures like steak or jerky (in moderation) require the canine's tearing function." },
+    { "id": 28, "name": "Lower Right 1st Premolar", "type": "Bicuspid", "description": "Mirror image of #21.", "function": "Crushing.", "precautions": "Check for cervical decay (near the gum line).", "brushing_protocol": "Modified Bass technique (45-degree angle).", "dietary_advice": "Sugar-free yogurt provides probiotics that fight 'bad' oral bacteria." },
+    { "id": 29, "name": "Lower Right 2nd Premolar", "type": "Bicuspid", "description": "Mirror image of #20.", "function": "Crushing.", "precautions": "Frequent site for food impaction.", "brushing_protocol": "Clean the 'distal' surface (the back) carefully.", "dietary_advice": "Avoid sucking on lemons or acidic candy; the lower premolars are highly susceptible to acid wear." },
+    { "id": 30, "name": "Lower Right 1st Molar", "type": "Molar", "description": "Mirror image of #19. Usually the largest and strongest tooth in the lower arch.", "function": "Heavy grinding.", "precautions": "Deep grooves (fissures) on the top are almost always where the first cavity starts.", "brushing_protocol": "15 seconds of focused vibration on the chewing surface.", "dietary_advice": "Foods high in Phosphorus (eggs/fish) to maintain enamel hardness." },
+    { "id": 31, "name": "Lower Right 2nd Molar", "type": "Molar", "description": "Mirror image of #18.", "function": "Grinding.", "precautions": "Limited space between the tooth and the cheek can lead to plaque buildup.", "brushing_protocol": "Use a small-head brush or an electric brush to reach the cheek-side properly.", "dietary_advice": "Raw carrots are 'nature’s toothbrush' for these large grinding teeth." },
+    { "id": 32, "name": "Lower Right 3rd Molar (Wisdom Tooth)", "type": "Molar", "description": "Mirror image of #17.", "function": "Grinding.", "precautions": "High risk of 'Pericoronitis'—inflammation of the gum flap over the tooth.", "brushing_protocol": "Focus on the very back surface; gag reflex often prevents people from cleaning here—try to push through it.", "dietary_advice": "Avoid seeds (chia/sesame) if you have an open socket or gum flap here, as they get trapped easily." }
+  ]
+}
