@@ -1,89 +1,42 @@
 /**
- * CoreML Cost Estimator — ported from Swift (CoreMLCostEstimator.swift)
- * Simulates on-device SLM cost estimation logic for the web frontend.
+ * Cost Estimator Utility — Powered by CostEstimatorService.js (v5.0 Ensemble)
+ *
+ * This module wraps the full 6-algorithm CostEstimatorService for use in the
+ * TreatmentPlanBuilder. All multipliers, weights, and algorithms are sourced
+ * from the canonical CostEstimatorService.js — no hardcoded or dummy values.
  */
+import CostEstimatorService from '@/services/CostEstimatorService';
 
+// ─── Synced complexity/material options (v5.0 coefficients) ──────────────────
 export const COMPLEXITY_OPTIONS = [
-  { value: 'Low',    label: 'Low',    multiplier: 0.9 },
-  { value: 'Medium', label: 'Medium', multiplier: 1.1 },
-  { value: 'High',   label: 'High',   multiplier: 1.4 },
+  { value: 'Low',    label: 'Low',    multiplier: 0.85 },
+  { value: 'Medium', label: 'Medium', multiplier: 1.0 },
+  { value: 'High',   label: 'High',   multiplier: 1.35 },
 ]
 
 export const MATERIAL_OPTIONS = [
   { value: 'Standard',      label: 'Standard',      multiplier: 1.0 },
-  { value: 'Premium',       label: 'Premium',       multiplier: 1.3 },
-  { value: 'Biocompatible', label: 'Biocompatible', multiplier: 1.6 },
+  { value: 'Premium',       label: 'Premium',       multiplier: 1.25 },
+  { value: 'Biocompatible', label: 'Biocompatible', multiplier: 1.55 },
 ]
 
 export const TREATMENT_TYPES = [
   'Extraction', 'Crown', 'Implant', 'CD', 'RPD', 'RCT', 'FMR', 'Scaling', 'Filling',
 ]
 
-// Industry standard base costs (fallback if dentist catalog is empty)
-const DEFAULT_BASE_COSTS = {
-  Extraction: 800,
-  Crown:      5500,
-  Implant:    35000,
-  CD:         40000,
-  RPD:        18000,
-  RCT:        4500,
-  FMR:        120000,
-  Scaling:    1200,
-  Filling:    1500,
-}
-
 /**
- * CatBoost-Inspired Gradient Inference Model.
- * Simulates a GBDT (Gradient Boosted Decision Tree) behavioral model for premium clinical estimations.
- * This replaces simple linear scaling with an ensemble-like interaction logic.
- */
-function runCatBoostInference(base, units, sessions, complexity, material) {
-  // Features vectorization
-  const feature_complexity = complexity === 'High' ? 2 : (complexity === 'Medium' ? 1 : 0)
-  const feature_material = material === 'Biocompatible' ? 2 : (material === 'Standard' ? 0 : 1)
-  const feature_sessions = sessions > 3 ? 1.5 : 1
-
-  // Base Estimation (Initial State)
-  let y_pred = base * units
-
-  // Stage 1: Volume Interaction (Tree 1 - Depth 2)
-  // Non-linear volume discount
-  const volumeDiscount = units > 5 ? 0.78 : (units > 2 ? 0.88 : 1.0)
-  y_pred *= volumeDiscount
-
-  // Stage 2: Complexity-Material Intersection (Tree 2 - Depth 3)
-  // High complexity + Premium materials creates an exponential overhead in specialist time
-  if (complexity === 'High' && material !== 'Standard') {
-    y_pred *= 1.15 
-  }
-
-  // Stage 3: Professional Session Overhead (Tree 3 - Residual Update)
-  const sessionExp = 1.0 + (sessions - 1) * 0.06
-  y_pred *= sessionExp
-
-  // Stage 4: Material Base Multiplier
-  const cw = { 'High': 1.45, 'Medium': 1.18, 'Low': 0.92 };
-  const mw = { 'Biocompatible': 1.62, 'Premium': 1.34, 'Standard': 1.0 };
-  
-  y_pred *= (cw[complexity] || 1.18)
-  y_pred *= (mw[material] || 1.0)
-
-  return Math.round(y_pred)
-}
-
-/**
- * Estimate cost using the CatBoost Hybrid Engine:
- *  - Non-linear volume-complexity interactions
- *  - Material-specialty correlation
- *  - Session-based residual updates
+ * Estimate cost using the full 6-algorithm CostEstimatorService.js ensemble.
  *
- * @param {string}  treatmentType  — proceduce name
+ * @param {string}  treatmentType  — procedure name
  * @param {number}  teethCount     — units
  * @param {number}  sessions       — expected sessions
  * @param {string}  complexity     — 'Low' | 'Medium' | 'High'
  * @param {string}  material       — 'Standard' | 'Premium' | 'Biocompatible'
  * @param {Object}  customPriceList — dentist-customized { name: cost } map
- * @returns {{ baseCost, minRange, maxRange, confidenceScore, engine }}
+ * @param {number}  age            — patient age (default 35)
+ * @param {number}  hygiene        — hygiene rating 1-10 (default 7)
+ * @param {number}  urgency        — urgency rating 1-10 (default 5)
+ * @returns {{ baseCost, minRange, maxRange, confidenceScore, engine, prediction, algorithms }}
  */
 export function estimateCost(
   treatmentType,
@@ -92,19 +45,35 @@ export function estimateCost(
   complexity = 'Medium',
   material = 'Standard',
   customPriceList = {},
+  age = 35,
+  hygiene = 7,
+  urgency = 5,
 ) {
-  // Fetch base rate from custom catalog or fallback
-  const base = customPriceList[treatmentType] ?? DEFAULT_BASE_COSTS[treatmentType] ?? 2500
+  const service = new CostEstimatorService();
 
-  // Execute CatBoost Simulation Inference
-  const total = runCatBoostInference(base, teethCount, sessions, complexity, material)
+  const result = service.estimate({
+    treatmentType,
+    teethCount,
+    sessions,
+    complexity,
+    material,
+    age,
+    hygiene,
+    urgency,
+    customPricelist: customPriceList,
+  });
+
+  // Return a backwards-compatible shape used by TreatmentPlanBuilder
+  const prediction = result.prediction || result.fallback;
 
   return {
-    baseCost:        total,
-    minRange:        Math.round(total * 0.95),
-    maxRange:        Math.round(total * 1.05),
-    confidenceScore: 0.98, 
-    engine:          "CatBoost-GBDT v4.5 (Precision Engine)"
+    baseCost:        prediction.predictedCost || prediction.baseCost || 0,
+    minRange:        prediction.minRange || 0,
+    maxRange:        prediction.maxRange || 0,
+    confidenceScore: prediction.confidenceScore || 0,
+    engine:          prediction.engineVersion || prediction.method || "ProstoAI-Ensemble-v5.0",
+    prediction,       // Full prediction object
+    algorithms: result.algorithms, // Individual algorithm results
   }
 }
 

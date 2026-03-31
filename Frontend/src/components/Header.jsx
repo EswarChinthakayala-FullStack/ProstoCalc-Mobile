@@ -20,6 +20,7 @@ import { LogOut, User, LayoutDashboard } from 'lucide-react'
 const navItems = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
+  { label: 'Docs', path: '/docs' },
 ]
 
 const Header = () => {

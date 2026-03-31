@@ -4,9 +4,8 @@ struct PatientLoginView: View {
     // MARK: - State Properties
     @State private var email = ""
     @State private var password = ""
+    @State private var activeToast: Toast? = nil
     @State private var animateEntry = false
-    @State private var showAlert = false
-    @State private var alertMessage = ""
     @State private var isLoggedIn = false 
     @State private var currentPatientID: Int = 0
     @State private var activePatientID: PatientIDWrapper?
@@ -112,7 +111,8 @@ struct PatientLoginView: View {
                                 placeholder: "Email Address",
                                 isSecure: false,
                                 keyboardType: .emailAddress,
-                                autocapitalization: .never
+                                autocapitalization: .never,
+                                status: email.isEmpty ? .none : (email.lowercased().contains("gmail") ? .success : .invalid)
                             )
                             
                             DentalInputView(
@@ -120,7 +120,8 @@ struct PatientLoginView: View {
                                 icon: "lock.fill",
                                 placeholder: "Password",
                                 isSecure: true,
-                                showFaceID: true
+                                showFaceID: true,
+                                status: password.isEmpty ? .none : .none // Login password doesn't need real-time validation
                             )
                             
                             // Forgot Password Link
@@ -144,11 +145,17 @@ struct PatientLoginView: View {
                             let passwordRegex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{6,}$"
                             let isValid = NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
                             
-                            if !isValid {
-                                alertMessage = "Security Protocol: Password must be at least 6 chars, with 1 uppercase, 1 number, and 1 special char."
-                                showAlert = true
+                            if !email.lowercased().contains("gmail") {
+                                activeToast = Toast(message: "Validation: Only @gmail.com accounts are permitted.", type: .error)
                                 return
                             }
+                            
+                            if !isValid {
+                                activeToast = Toast(message: "Security Protocol: Password must be 6+ chars with complexity requirements.", type: .error)
+                                return
+                            }
+                            
+                            activeToast = Toast(message: "Authenticating with secure server...", type: .info)
                             
                             let patientData = [
                                 "email": email.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
@@ -185,8 +192,7 @@ struct PatientLoginView: View {
                                          }
                                          
                                      case .failure(let error):
-                                         alertMessage = "Login Failed: \(error.localizedDescription)"
-                                         showAlert = true
+                                         activeToast = Toast(message: "Login Failed: \(error.localizedDescription)", type: .error)
                                      }
                                 }
                             }
@@ -211,9 +217,7 @@ struct PatientLoginView: View {
                                 )
                         }
                         .buttonStyle(ScaleButtonStyle())
-                        .alert(isPresented: $showAlert) {
-                            Alert(title: Text("Login Failed"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-                        }
+                        
                         .fullScreenCover(item: $activePatientID) { wrapper in
                             Group {
                                 if navigationDestination == .location {
@@ -235,7 +239,7 @@ struct PatientLoginView: View {
                             }
                         }
                         .fullScreenCover(isPresented: $showForgotPassword) {
-                            NavigationView {
+                            NavigationStack {
                                 ForgotPasswordRequestView(viewModel: ForgotPasswordViewModel())
                             }
                         }
@@ -331,6 +335,7 @@ struct PatientLoginView: View {
                 .padding(.top, 60)
             }
         }
+        .toastView(toast: $activeToast)
         .navigationBarHidden(true) // We use our custom back button
         .onAppear {
             withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {

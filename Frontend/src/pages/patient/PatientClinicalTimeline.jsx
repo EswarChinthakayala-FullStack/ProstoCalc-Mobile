@@ -355,7 +355,7 @@ const PatientClinicalTimeline = () => {
 
                 <div className="space-y-8">
                   <div className="flex items-center gap-3 px-1">
-                    <div className="w-8 h-8 rounded-xl bg-blue-600/10 flex items-center justify-center border border-blue-600/20">
+                    <div className="w-8 h-8 rounded-md bg-blue-600/10 flex items-center justify-center border border-blue-600/20">
                       <Target className="w-4 h-4 text-blue-600" />
                     </div>
                     <h3 className="text-[11px] font-black text-slate-900 dark:text-white uppercase tracking-[0.2em]">Clinical Roadmap</h3>

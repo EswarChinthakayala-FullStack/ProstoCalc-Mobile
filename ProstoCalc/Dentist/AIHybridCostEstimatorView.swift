@@ -12,6 +12,9 @@ struct AIHybridCostEstimatorView: View {
     @State private var sessions = 1
     @State private var complexity: CoreMLCostEstimator.TreatmentComplexity = .medium
     @State private var material: CoreMLCostEstimator.MaterialType = .standard
+    @State private var patientAge = 35
+    @State private var hygieneRating = 7
+    @State private var urgencyRating = 5
     
     @State private var estimation: CoreMLCostEstimator.EstimationResult?
     @State private var aiExplanation = ""
@@ -57,6 +60,9 @@ struct AIHybridCostEstimatorView: View {
         .onChange(of: sessions) { _ in updateEstimationAsync() }
         .onChange(of: complexity) { _ in updateEstimationAsync() }
         .onChange(of: material) { _ in updateEstimationAsync() }
+        .onChange(of: patientAge) { _ in updateEstimationAsync() }
+        .onChange(of: hygieneRating) { _ in updateEstimationAsync() }
+        .onChange(of: urgencyRating) { _ in updateEstimationAsync() }
     }
     
     // MARK: - View Components
@@ -148,19 +154,51 @@ struct AIHybridCostEstimatorView: View {
                 
                 Divider().opacity(0.5)
                 
-                // Sessions Stepper
-                Stepper(value: $sessions, in: 1...10) {
-                    HStack {
-                        Text("Expected Sessions")
-                            .font(.system(size: 16, weight: .semibold))
-                        Spacer()
-                        Text("\(sessions)")
+                Divider().opacity(0.5)
+                
+                // Patient Age
+                HStack {
+                    Text("Patient Age")
+                        .font(.system(size: 16, weight: .semibold))
+                    Spacer()
+                    Stepper(value: $patientAge, in: 1...100) {
+                        Text("\(patientAge)")
                             .font(.system(size: 16, weight: .bold))
                             .foregroundColor(.teal)
-                            .padding(.trailing, 8)
                     }
                 }
                 .padding(.vertical, 14)
+                
+                Divider().opacity(0.5)
+                
+                // Hygiene & Urgency
+                VStack(spacing: 12) {
+                    HStack {
+                        Text("Hygiene")
+                            .font(.system(size: 14, weight: .bold))
+                        Spacer()
+                        Text("\(hygieneRating)/10")
+                            .font(.system(size: 14, weight: .black))
+                            .foregroundColor(.teal)
+                    }
+                    Slider(value: Binding(get: { Double(hygieneRating) }, set: { hygieneRating = Int($0) }), in: 1...10, step: 1)
+                        .tint(.teal)
+                }
+                .padding(.vertical, 10)
+                
+                VStack(spacing: 12) {
+                    HStack {
+                        Text("Clinical Urgency")
+                            .font(.system(size: 14, weight: .bold))
+                        Spacer()
+                        Text("\(urgencyRating)/10")
+                            .font(.system(size: 14, weight: .black))
+                            .foregroundColor(.orange)
+                    }
+                    Slider(value: Binding(get: { Double(urgencyRating) }, set: { urgencyRating = Int($0) }), in: 1...10, step: 1)
+                        .tint(.orange)
+                }
+                .padding(.vertical, 10)
             }
             .modifier(CardStyleModifier())
         }
@@ -410,6 +448,9 @@ struct AIHybridCostEstimatorView: View {
                 sessions: sCount,
                 complexity: cLevel,
                 material: mType,
+                patientAge: patientAge,
+                hygieneRating: hygieneRating,
+                urgencyRating: urgencyRating,
                 customPricelist: costs
             )
             

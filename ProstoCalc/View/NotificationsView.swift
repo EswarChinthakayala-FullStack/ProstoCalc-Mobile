@@ -199,21 +199,23 @@ struct NotificationsView: View {
     }
     
     private var emptyStateView: some View {
-        Spacer()
-        VStack(spacing: 20) {
-            ZStack {
-                Circle()
-                    .fill(Color.white.opacity(0.5))
-                    .frame(width: 100, height: 100)
-                Image(systemName: "tray.and.arrow.down")
-                    .font(.system(size: 40))
-                    .foregroundColor(themeColor.opacity(0.3))
+        VStack {
+            Spacer()
+            VStack(spacing: 20) {
+                ZStack {
+                    Circle()
+                        .fill(Color.white.opacity(0.5))
+                        .frame(width: 100, height: 100)
+                    Image(systemName: "tray.and.arrow.down")
+                        .font(.system(size: 40))
+                        .foregroundColor(themeColor.opacity(0.3))
+                }
+                Text("No notifications yet")
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .foregroundColor(.secondary)
             }
-            Text("No notifications yet")
-                .font(.system(size: 16, weight: .bold, design: .rounded))
-                .foregroundColor(.secondary)
+            Spacer()
         }
-        return Spacer()
     }
     
     // MARK: - Logic Helpers

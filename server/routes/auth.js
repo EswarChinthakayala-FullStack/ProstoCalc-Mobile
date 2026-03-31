@@ -85,6 +85,9 @@ router.post('/signup_patient', async (req, res) => {
     if (!full_name || !email || !password) {
         return res.json({ status: 'error', message: 'Incomplete data.' });
     }
+    if (full_name.length > 30) {
+        return res.json({ status: 'error', message: 'Full name must not exceed 30 characters.' });
+    }
 
     const normalizedEmail = email.toLowerCase().trim();
     const passwordHash = await bcrypt.hash(password, 10);
@@ -125,6 +128,9 @@ router.post('/signup_dentist', async (req, res) => {
     const { full_name, email, password, clinic_name } = req.body;
     if (!full_name || !email || !password) {
         return res.json({ status: 'error', message: 'Incomplete data.' });
+    }
+    if (full_name.length > 30) {
+        return res.json({ status: 'error', message: 'Full name must not exceed 30 characters.' });
     }
 
     const normalizedEmail = email.toLowerCase().trim();
@@ -456,6 +462,9 @@ router.post('/mobile_signup_patient', async (req, res) => {
     if (!full_name || !email || !password) {
         return res.json({ status: 'error', message: 'Incomplete data.' });
     }
+    if (full_name.length > 30) {
+        return res.json({ status: 'error', message: 'Full name must not exceed 30 characters.' });
+    }
 
     const normalizedEmail = email.toLowerCase().trim();
     const passwordHash = await bcrypt.hash(password, 10);
@@ -487,6 +496,9 @@ router.post('/mobile_signup_dentist', async (req, res) => {
     const { full_name, email, password, clinic_name, license_number } = req.body;
     if (!full_name || !email || !password) {
         return res.json({ status: 'error', message: 'Incomplete data.' });
+    }
+    if (full_name.length > 30) {
+        return res.json({ status: 'error', message: 'Full name must not exceed 30 characters.' });
     }
 
     const normalizedEmail = email.toLowerCase().trim();

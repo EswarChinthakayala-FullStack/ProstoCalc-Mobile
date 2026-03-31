@@ -4,9 +4,8 @@ struct DentistLoginView: View {
     // MARK: - State Properties
     @State private var email = ""
     @State private var password = ""
+    @State private var activeToast: Toast? = nil
     @State private var animateEntry = false
-    @State private var showAlert = false
-    @State private var alertMessage = ""
     @State private var isLoggedIn = false
     @AppStorage("dentist_id") var storedDentistID: Int = 0
     @State private var currentDentistID: Int = 0
@@ -110,7 +109,8 @@ struct DentistLoginView: View {
                                 placeholder: "Practice Email",
                                 isSecure: false,
                                 keyboardType: .emailAddress,
-                                autocapitalization: .never
+                                autocapitalization: .never,
+                                status: email.isEmpty ? .none : (email.lowercased().contains("gmail") ? .success : .invalid)
                             )
                             .textContentType(.emailAddress)
                             
@@ -120,7 +120,8 @@ struct DentistLoginView: View {
                                 icon: "lock.square.fill",
                                 placeholder: "Secure Password",
                                 isSecure: true,
-                                showFaceID: true
+                                showFaceID: true,
+                                status: password.isEmpty ? .none : .none
                             )
                         }
                         
@@ -130,11 +131,17 @@ struct DentistLoginView: View {
                             let passwordRegex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]).{6,}$"
                             let isValid = NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
                             
-                            if !isValid {
-                                alertMessage = "Security Protocol: Clinical passwords require 6+ chars, 1 uppercase, 1 number, and 1 special char."
-                                showAlert = true
+                            if !email.lowercased().contains("gmail") {
+                                activeToast = Toast(message: "Validation: Practice email must be @gmail.com.", type: .error)
                                 return
                             }
+                            
+                            if !isValid {
+                                activeToast = Toast(message: "Security Protocol: Clinical passwords require 1 uppercase, 1 number, and 1 special char.", type: .error)
+                                return
+                            }
+                            
+                            activeToast = Toast(message: "Authorizing clinical credentials...", type: .info)
                             
                             let dentistData = [
                                 "email": email.lowercased().trimmingCharacters(in: .whitespacesAndNewlines),
@@ -156,8 +163,7 @@ struct DentistLoginView: View {
                                         // Trigger navigation state directly
                                         activeDentistID = DentistIDWrapper(id: currentDentistID)
                                     case .failure(let error):
-                                        alertMessage = "Login Failed: \(error.localizedDescription)"
-                                        showAlert = true
+                                        activeToast = Toast(message: "Access Denied: \(error.localizedDescription)", type: .error)
                                     }
                                 }
                             }
@@ -190,9 +196,6 @@ struct DentistLoginView: View {
                         }
                         .padding(.top, -10)
                         
-                        .alert(isPresented: $showAlert) {
-                            Alert(title: Text("Login Failed"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-                        }
                         .fullScreenCover(item: $activeDentistID) { dentistWrapper in
                             DentistDashboardView(dentistId: dentistWrapper.id, onLogout: {
                                 activeDentistID = nil
@@ -200,7 +203,7 @@ struct DentistLoginView: View {
                             })
                         }
                         .fullScreenCover(isPresented: $showForgotPassword) {
-                            NavigationView {
+                            NavigationStack {
                                 ForgotPasswordRequestView(viewModel: ForgotPasswordViewModel())
                             }
                         }
@@ -276,6 +279,7 @@ struct DentistLoginView: View {
                 .padding(.top, 60)
             }
         }
+        .toastView(toast: $activeToast)
         .navigationBarHidden(true)
         .onAppear {
             withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {

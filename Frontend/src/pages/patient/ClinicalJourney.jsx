@@ -122,7 +122,7 @@ const ClinicalJourney = () => {
 
   if (!journey) return (
     <div className="flex min-h-screen bg-background font-sans selection:bg-primary/10 relative">
-      <BackgroundOrbs />
+     
       <PatientSidebar />
 
       <main className={`flex-1 transition-all duration-300 ${isCollapsed ? 'xl:ml-[100px]' : 'xl:ml-[300px]'} min-h-screen flex items-center justify-center p-6 relative z-10 w-full`}>
@@ -155,7 +155,7 @@ const ClinicalJourney = () => {
 
   return (
     <div className="flex h-screen bg-background font-sans selection:bg-primary/10 relative overflow-hidden">
-      <BackgroundOrbs />
+      
       <PatientSidebar />
 
       <main className={`flex-1 transition-all duration-300 ${isCollapsed ? 'xl:ml-[100px]' : 'xl:ml-[300px]'} flex flex-col relative z-10 h-screen overflow-hidden`}>
@@ -207,8 +207,7 @@ const ClinicalJourney = () => {
         </header>
 
         <div className="flex-1 overflow-y-auto">
-          <div className="absolute inset-0 opacity-100 pointer-events-none"
-            style={{ backgroundImage: `radial-gradient(var(--border) 1.5px, transparent 1.5px)`, backgroundSize: '24px 24px' }} />
+       
           <div className="max-w-[1600px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8 pb-20">
             {/* Stats Bar */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

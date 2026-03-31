@@ -140,35 +140,45 @@ const PatientDashboard = () => {
   }, [user?.id])
 
   const getProgress = () => {
-    let therapyScore = 0
-    let factors = 0
+    // 1. Calculate Daily Compliance (0-100)
+    let dailyCompliance = 0
+    let complianceFactors = 0
 
-    // Factor 1: Exercise Progress (50% weight)
     if (exerciseSettings) {
       const goal = exerciseSettings.daily_goal_minutes || 15
       const current = exerciseProgress?.total_minutes_today || 0
-      therapyScore += Math.min(100, (current / goal) * 100) * 0.5
-      factors += 0.5
+      dailyCompliance += Math.min(100, (current / goal) * 100)
+      complianceFactors++
     }
 
-    // Factor 2: Medication Adherence (50% weight)
     if (medicalData.medications && medicalData.medications.length > 0) {
+      const today = new Date().toISOString().split('T')[0]
       const total = medicalData.medications.length
-      const taken = medicalData.medications.filter(m => m.status === 'taken').length
-      therapyScore += (taken / total) * 100 * 0.5
-      factors += 0.5
+      const taken = medicalData.medications.filter(m => 
+        m.logs?.some(l => l.log_date === today && l.status === 'taken')
+      ).length
+      dailyCompliance += (taken / total) * 100
+      complianceFactors++
     }
 
-    // If therapy factors exist, return weighted average
-    if (factors > 0) return Math.round(therapyScore)
+    const avgCompliance = complianceFactors > 0 ? dailyCompliance / complianceFactors : 100
 
-    // Fallback: Treatment Stage Progress
+    // 2. Base Stage Progress
     const s = medicalData.activePlan?.visit_status
-    if (!medicalData.activePlan) return 15
-    if (s === 'visited' || s === 'COMPLETED') return 100
-    if (s === 'in_progress') return 65
-    if (s === 'arrived') return 35
-    return 20
+    let baseProgress = 15
+    if (s === 'visited' || s === 'COMPLETED') baseProgress = 100
+    else if (s === 'in_progress') baseProgress = 65
+    else if (s === 'arrived') baseProgress = 35
+    else if (medicalData.activePlan) baseProgress = 20
+
+    // 3. Overall Progress (Weighted: Stage is 80%, Daily is 20%)
+    // This prevents the 0% drop when factors exist but aren't logged yet today
+    if (complianceFactors > 0) {
+      // If stage is 100%, we still show near-100% but weighted by compliance
+      return Math.round((baseProgress * 0.8) + (avgCompliance * 0.2))
+    }
+
+    return baseProgress
   }
 
   if (isLoading || trackersLoading) return <UniversalLoader text="Loading dashboard…" />
@@ -185,9 +195,7 @@ const PatientDashboard = () => {
         'flex flex-col h-screen relative z-10 min-w-0 overflow-hidden'
       )}>
         {/* Dot grid */}
-        <div className="absolute inset-0 pointer-events-none opacity-100 shadow-inner"
-          style={{ backgroundImage: `radial-gradient(${theme === 'dark' ? '#18181b' : '#f1f5f9'} 1.5px, transparent 1.5px)`, backgroundSize: '32px 32px' }} />
-
+      
         {/* ══ HEADER ════════════════════════════════════════════════════════ */}
         <header className="sticky top-0 z-[100] bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-slate-100 dark:border-zinc-800/50 shrink-0">
           <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -283,18 +291,32 @@ const PatientDashboard = () => {
                     </div>
 
                     <div className="shrink-0 bg-white/[0.05] border border-white/10 rounded-md p-5 text-center min-w-[130px] space-y-5">
-                      <div>
-                        <p className="text-[9px] font-bold text-blue-400 uppercase tracking-[0.15em] mb-1">Consistency</p>
-                        <p className="text-2xl font-extrabold">{medicalData.habitStats?.tobacco_free?.consistency_score || 0}%</p>
-                      </div>
-                      <div className="w-full h-px bg-white/10" />
-                      <div>
-                        <p className="text-[9px] font-bold text-amber-400 uppercase tracking-[0.15em] mb-1">Streak</p>
-                        <div className="flex items-center justify-center gap-1.5">
-                          <Flame className="w-4 h-4 text-amber-500" />
-                          <p className="text-xl font-extrabold">{medicalData.habitStats?.tobacco_free?.current_streak || 0}d</p>
-                        </div>
-                      </div>
+                      {(() => {
+                        const stats = medicalData.habitStats || {}
+                        const bestStreakKey = Object.keys(stats).sort((a, b) => 
+                          (stats[b]?.consistency_score || 0) - (stats[a]?.consistency_score || 0)
+                        )[0] || 'tobacco_free'
+                        
+                        const activeStreak = stats[bestStreakKey] || { consistency_score: 0, current_streak: 0 }
+                        const label = bestStreakKey.replace(/_/g, ' ').toUpperCase()
+
+                        return (
+                          <>
+                            <div>
+                              <p className="text-[9px] font-bold text-blue-400 uppercase tracking-[0.15em] mb-1">{label} Consistency</p>
+                              <p className="text-2xl font-extrabold">{activeStreak.consistency_score || 0}%</p>
+                            </div>
+                            <div className="w-full h-px bg-white/10" />
+                            <div>
+                              <p className="text-[9px] font-bold text-amber-400 uppercase tracking-[0.15em] mb-1">Streak</p>
+                              <div className="flex items-center justify-center gap-1.5">
+                                <Flame className="w-4 h-4 text-amber-500" />
+                                <p className="text-xl font-extrabold">{activeStreak.current_streak || 0}d</p>
+                              </div>
+                            </div>
+                          </>
+                        )
+                      })()}
                     </div>
                   </div>
                 </div>
@@ -464,7 +486,12 @@ const PatientDashboard = () => {
                               <p className="text-[10px] font-medium text-slate-400 dark:text-slate-500 mt-0.5">{med.dosage} · {med.scheduled_time}</p>
                             </div>
                           </div>
-                          <CheckCircle className="w-4 h-4 text-slate-200 dark:text-slate-700 group-hover/med:text-emerald-400 transition-colors" />
+                          <CheckCircle className={cn(
+                            "w-4 h-4 transition-colors",
+                            med.logs?.some(l => l.log_date === new Date().toISOString().split('T')[0] && l.status === 'taken')
+                              ? "text-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.3)]"
+                              : "text-slate-200 dark:text-slate-700"
+                          )} />
                         </div>
                       ))
                     )}

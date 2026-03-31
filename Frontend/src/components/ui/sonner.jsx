@@ -7,11 +7,11 @@ import {
   OctagonXIcon,
   TriangleAlertIcon,
 } from "lucide-react"
-import { useTheme } from "next-themes"
+import { useTheme } from "../../context/ThemeContext"
 import { Toaster as Sonner } from "sonner"
 
 const Toaster = ({ ...props }) => {
-  const { theme = "system" } = useTheme()
+  const { theme = "light" } = useTheme()
 
   return (
     <Sonner
@@ -28,26 +28,26 @@ const Toaster = ({ ...props }) => {
       }}
       style={{
         // ── Toast surface ──────────────────────────────────────────────
-        "--normal-bg": "#ffffff",
-        "--normal-border": "#e2e8f0",
-        "--normal-text": "#0f172a",
+        "--normal-bg": "var(--card)",
+        "--normal-border": "var(--border)",
+        "--normal-text": "var(--foreground)",
 
         // ── Semantic types ─────────────────────────────────────────────
-        "--success-bg": "#f0fdf4",
-        "--success-border": "#bbf7d0",
-        "--success-text": "#14532d",
+        "--success-bg": "color-mix(in srgb, var(--background), #10b981 10%)",
+        "--success-border": "color-mix(in srgb, var(--border), #10b981 20%)",
+        "--success-text": "var(--foreground)",
 
-        "--info-bg": "#eff6ff",
-        "--info-border": "#bfdbfe",
-        "--info-text": "#1e3a8a",
+        "--info-bg": "color-mix(in srgb, var(--background), #3b82f6 10%)",
+        "--info-border": "color-mix(in srgb, var(--border), #3b82f6 20%)",
+        "--info-text": "var(--foreground)",
 
-        "--warning-bg": "#fffbeb",
-        "--warning-border": "#fde68a",
-        "--warning-text": "#78350f",
+        "--warning-bg": "color-mix(in srgb, var(--background), #f59e0b 10%)",
+        "--warning-border": "color-mix(in srgb, var(--border), #f59e0b 20%)",
+        "--warning-text": "var(--foreground)",
 
-        "--error-bg": "#fff1f2",
-        "--error-border": "#fecdd3",
-        "--error-text": "#881337",
+        "--error-bg": "color-mix(in srgb, var(--background), #f43f5e 10%)",
+        "--error-border": "color-mix(in srgb, var(--border), #f43f5e 20%)",
+        "--error-text": "var(--foreground)",
 
         // ── Shape ──────────────────────────────────────────────────────
         "--border-radius": "12px",
@@ -60,17 +60,19 @@ const Toaster = ({ ...props }) => {
           fontFamily: "inherit",
           fontSize: "13px",
           fontWeight: "500",
-          boxShadow: "0 4px 24px rgba(0,0,0,0.07)",
-          gap: "10px",
-          padding: "12px 14px",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+          gap: "12px",
+          padding: "14px 16px",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
         },
         classNames: {
-          toast: "!rounded-md",
-          title: "!text-[13px] !font-semibold",
-          description: "!text-[12px] !font-normal !leading-relaxed !opacity-70",
-          actionButton: "!h-7 !px-3 !rounded-md !text-[11px] !font-semibold !bg-slate-900 !text-white",
-          cancelButton: "!h-7 !px-3 !rounded-md !text-[11px] !font-medium !bg-slate-100 !border !border-slate-200 !text-slate-600",
-          closeButton: "!w-6 !h-6 !rounded-md !bg-slate-100 !border !border-slate-200 !text-slate-400",
+          toast: "!rounded-md !border-border",
+          title: "!text-[13px] !font-bold",
+          description: "!text-[12px] !font-medium !leading-relaxed !opacity-90",
+          actionButton: "!h-8 !px-4 !rounded-lg !text-[11px] !font-bold !bg-primary !text-primary-foreground !shadow-lg !shadow-primary/20",
+          cancelButton: "!h-8 !px-4 !rounded-lg !text-[11px] !font-bold !bg-muted !border !border-border !text-muted-foreground",
+          closeButton: "!w-7 !h-7 !rounded-full !bg-muted !border !border-border !text-muted-foreground !transition-colors hover:!bg-accent hover:!text-accent-foreground",
         },
       }}
       {...props}

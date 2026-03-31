@@ -224,12 +224,9 @@ const PriceEstimatorPage = () => {
 
   useEffect(() => {
     setIsCalculating(true);
-    const timer = setTimeout(() => {
-      const result = costEstimatorService.estimate({ ...formData, customPricelist });
-      setEstimate(result);
-      setIsCalculating(false);
-    }, 400);
-    return () => clearTimeout(timer);
+    const result = costEstimatorService.estimate({ ...formData, customPricelist });
+    setEstimate(result);
+    setIsCalculating(false);
   }, [formData.treatmentType, formData.teethCount, formData.sessions, formData.complexity, formData.material, customPricelist]);
 
   const handleAnalyze = async () => {
@@ -624,7 +621,7 @@ const PriceEstimatorPage = () => {
                 />
                 <StatCard
                   title="Market Comparison"
-                  value={(estimate?.prediction?.predictedCost * 1.05).toFixed(0).toLocaleString()}
+                  value={estimate?.prediction?.regionalMarketMedian?.toLocaleString() || (estimate?.prediction?.predictedCost * 1.05).toFixed(0).toLocaleString()}
                   subtext="Regional clinical median"
                   icon={Wallet}
                   accent="blue"

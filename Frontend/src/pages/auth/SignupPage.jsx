@@ -30,7 +30,7 @@ const Feature = ({ icon: Icon, title, desc, delay }) => (
 )
 
 /* ─── Input field ────────────────────────────────────────────────────────────── */
-const Field = ({ icon: Icon, placeholder, type = 'text', value, onChange }) => {
+const Field = ({ icon: Icon, placeholder, type = 'text', value, onChange, maxLength }) => {
   const [show, setShow] = useState(false)
   const isPwd = type === 'password'
   return (
@@ -42,6 +42,7 @@ const Field = ({ icon: Icon, placeholder, type = 'text', value, onChange }) => {
         value={value}
         onChange={e => onChange(e.target.value)}
         required
+        maxLength={maxLength}
         className={cn(
           'w-full h-12 rounded-md text-[14px] font-bold text-foreground',
           'bg-secondary/30 dark:bg-zinc-900 border border-border',
@@ -88,7 +89,7 @@ const SignupPage = () => {
   const [otp, setOtp] = useState('')
 
   // Strict Validations
-  const nameValid = formData.fullName.trim().length > 2 && !/[0-9]/.test(formData.fullName);
+  const nameValid = formData.fullName.trim().length > 2 && formData.fullName.length <= 30 && /^[a-zA-Z\s]+$/.test(formData.fullName);
   const licenseValid = /^\d{10}$/.test(formData.licenseNumber);
   const emailValid = formData.email.toLowerCase().endsWith('@gmail.com');
   const phoneValid = /^[6-9]\d{9}$/.test(formData.phone);
@@ -138,7 +139,7 @@ const SignupPage = () => {
     setIsLoading(true)
     try {
       const { verifyLogin } = await import('@/services/api')
-      const res = await verifyLogin(formData.email, 'dentist', otp)
+      const res = await verifyLogin(formData.email, 'dentist', otp, 'signup')
       if (res.status === 'success') {
         toast.success('Clinical identity verified successfully!')
         navigate('/login/clinician')
@@ -279,8 +280,8 @@ const SignupPage = () => {
                 <>
                   {/* Fields */}
                   <div className="space-y-1">
-                    <Field icon={UserSquare2} placeholder="Full name" value={formData.fullName} onChange={v => set('fullName', v)} />
-                    {formData.fullName && !nameValid && <p className="text-[10px] text-red-500 font-semibold px-1">Names cannot contain numbers.</p>}
+                    <Field icon={UserSquare2} placeholder="Full name" value={formData.fullName} onChange={v => set('fullName', v)} maxLength={30} />
+                    {formData.fullName && !nameValid && <p className="text-[10px] text-red-500 font-semibold px-1">Names must be letters/spaces only and max 30 characters.</p>}
                   </div>
                   <Field icon={Building2} placeholder="Clinic name" value={formData.clinicName} onChange={v => set('clinicName', v)} />
                   <div className="space-y-1">

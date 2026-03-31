@@ -208,12 +208,7 @@ const ContentCard = ({ resource, onClick }) => {
             {type === 'video' ? 'Play Experience' : 'Read Protocol'}
             <ChevronRight className="w-3.5 h-3.5" />
           </div>
-          <button
-            onClick={e => e.stopPropagation()}
-            className="w-8 h-8 rounded-md flex items-center justify-center text-slate-300 dark:text-slate-600 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10 transition-all active:scale-90"
-          >
-            <Bookmark className="w-4 h-4" />
-          </button>
+         
         </div>
       </div>
     </div>

@@ -481,12 +481,13 @@ const LandingPage = () => {
             <div className="space-y-3 sm:space-y-4">
               <h4 className="text-[10px] sm:text-xs font-black tracking-widest uppercase text-[#0D2659] dark:text-white">Platform</h4>
               {['Cost Estimator', 'Treatment Plans', 'AI Reports'].map(l => <a key={l} href="#" className="block text-xs sm:text-sm text-slate-500 hover:text-blue-600 transition-colors font-medium">{l}</a>)}
+              <Link to="/docs" className="block text-xs sm:text-sm text-slate-500 hover:text-blue-600 transition-colors font-medium">Documentation</Link>
             </div>
             <div className="space-y-3 sm:space-y-4">
               <h4 className="text-[10px] sm:text-xs font-black tracking-widest uppercase text-[#0D2659] dark:text-white">Contact</h4>
               <div className="flex items-center gap-2 sm:gap-3"><img src={imgFooterCall} className="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-50" alt="" /><span className="text-xs sm:text-sm text-slate-500">+91 98765 43210</span></div>
-              <div className="flex items-center gap-2 sm:gap-3"><img src={imgFooterLocation} className="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-50" alt="" /><span className="text-xs sm:text-sm text-slate-500">Mumbai, India</span></div>
-              <div className="flex items-center gap-2 sm:gap-3"><img src={imgFooterTime} className="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-50" alt="" /><span className="text-xs sm:text-sm text-slate-500">Mon - Sat: 9AM - 8PM</span></div>
+              <div className="flex items-center gap-2 sm:gap-3"><img src={imgFooterLocation} className="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-50" alt="" /><span className="text-xs sm:text-sm text-slate-500">Chennai, India</span></div>
+              <div className="flex items-center gap-2 sm:gap-3"><img src={imgFooterTime} className="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-50" alt="" /><span className="text-xs sm:text-sm text-slate-500">Mon - Sun: 9AM - 8PM</span></div>
             </div>
           </div>
           <Separator className="mb-6 sm:mb-8" />

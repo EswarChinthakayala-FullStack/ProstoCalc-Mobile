@@ -9,6 +9,20 @@ struct DentalInputView: View {
     var keyboardType: UIKeyboardType = .default
     var autocapitalization: TextInputAutocapitalization = .sentences
     
+    enum InputStatus {
+        case success, invalid, none
+        
+        var color: Color {
+            switch self {
+            case .success: return .green.opacity(0.6)
+            case .invalid: return .red.opacity(0.6)
+            case .none: return .blue.opacity(0.15)
+            }
+        }
+    }
+    
+    var status: InputStatus = .none
+    
     // Password visibility state
     @State private var isPasswordVisible: Bool = false
     
@@ -62,7 +76,7 @@ struct DentalInputView: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.blue.opacity(0.15), lineWidth: 1)
+                .stroke(status.color, lineWidth: status == .none ? 1 : 1.5)
         )
     }
 }

@@ -30,7 +30,8 @@ struct ForgotPasswordRequestView: View {
                 .padding(.horizontal, 25)
                 .padding(.top, 20)
                 
-                ScrollView(showsIndicators: false) {
+                NavigationStack {
+                    ScrollView(showsIndicators: false) {
                     VStack(spacing: 40) {
                         
                         // Header Visual
@@ -142,11 +143,11 @@ struct ForgotPasswordRequestView: View {
                         
                         Spacer()
                     }
+                    }
                     .padding(.top, 20)
                 }
-                
-                NavigationLink(destination: OTPVerificationView(viewModel: viewModel), isActive: $navigateToOTP) {
-                    EmptyView()
+                .navigationDestination(isPresented: $navigateToOTP) {
+                    OTPVerificationView(viewModel: viewModel)
                 }
             }
             

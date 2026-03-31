@@ -50,9 +50,9 @@ export const loginPatient = async (email, password) => {
   }
 }
 
-export const verifyLogin = async (email, role, otp) => {
+export const verifyLogin = async (email, role, otp, type = 'login') => {
   try {
-    const response = await api.post('/login_verify', { email, role, otp })
+    const response = await api.post('/login_verify', { email, role, otp, type })
     return response.data
   } catch (error) {
     throw error.response?.data || { status: 'error', message: error.message }

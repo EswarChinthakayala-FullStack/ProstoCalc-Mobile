@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import AppLayout from './layout/app-layout'
 import LandingPage from './pages/LandingPage'
 import AboutPage from './pages/AboutPage'
-import { Toaster } from 'sonner'
+import { Toaster } from './components/ui/sonner'
 import LoginPage from './pages/auth/LoginPage'
 import SignupPage from './pages/auth/SignupPage'
 import RoleSelectionPage from './pages/auth/RoleSelectionPage'
@@ -54,6 +54,9 @@ import ClinicalRegistry from './pages/dashboard/ClinicalRegistry'
 import NotificationsPage from './pages/NotificationsPage'
 import PatientPortfolioPage from './pages/dentist/PatientPortfolioPage'
 import NotFound from './pages/NotFound'
+import HelperBot from './components/HelperBot'
+import DocsPage from './pages/DocsPage'
+import { ThemeProvider } from './context/ThemeContext'
 
 const DashboardRedirect = () => {
   const { user } = useAuth()
@@ -64,7 +67,7 @@ const DashboardRedirect = () => {
 
 const router = createBrowserRouter([
   {
-    element: <><Toaster position="top-right" /><AppLayout /><HelperBot /></>,
+    element: <AppLayout />,
     children: [
       {
         path: '/',
@@ -76,37 +79,41 @@ const router = createBrowserRouter([
       },
     ]
   },
+  {
+    path: '/docs',
+    element: <><DocsPage /><HelperBot /></>
+  },
   // Auth Routes (Protected from already logged-in users)
   {
     element: <RedirectIfAuthenticated />,
     children: [
       {
         path: '/login',
-        element: <><Toaster position="bottom-right" /><RoleSelectionPage /></>
+        element: <RoleSelectionPage />
       },
       {
         path: '/signup',
-        element: <><Toaster position="bottom-right" /><RoleSelectionPage /></>
+        element: <RoleSelectionPage />
       },
       {
         path: '/login/clinician',
-        element: <><Toaster position="bottom-right" /><LoginPage /></>
+        element: <LoginPage />
       },
       {
         path: '/signup/clinician',
-        element: <><Toaster position="bottom-right" /><SignupPage /></>
+        element: <SignupPage />
       },
       {
         path: '/login/patient',
-        element: <><Toaster position="bottom-right" /><PatientLoginPage /></>
+        element: <PatientLoginPage />
       },
       {
         path: '/signup/patient',
-        element: <><Toaster position="bottom-right" /><PatientSignupPage /></>
+        element: <PatientSignupPage />
       },
       {
         path: '/forgot-password',
-        element: <><Toaster position="bottom-right" /><ForgotPassword /></>
+        element: <ForgotPassword />
       },
     ]
   },
@@ -114,7 +121,7 @@ const router = createBrowserRouter([
   // Dashboard Routes
   {
     path: '/dashboard',
-    element: <><Toaster position="top-right" /><RequireAuth /><HelperBot /></>,
+    element: <RequireAuth />,
     children: [
         {
             index: true,
@@ -125,7 +132,7 @@ const router = createBrowserRouter([
   
   // Clinician Routes (Protected)
   {
-    element: <><Toaster position="top-right" /><RequireAuth allowedRoles={['dentist']} /><HelperBot /></>,
+    element: <RequireAuth allowedRoles={['dentist']} />,
     children: [
         {
             path: '/dashboard/clinician',
@@ -208,7 +215,7 @@ const router = createBrowserRouter([
 
   // Patient Routes (Protected)
   {
-    element: <><Toaster position="top-right" /><RequireAuth allowedRoles={['patient']} /><HelperBot /></>,
+    element: <RequireAuth allowedRoles={['patient']} />,
     children: [
         {
             path: '/dashboard/patient',
@@ -298,13 +305,10 @@ const router = createBrowserRouter([
   }
 ])
 
-import HelperBot from './components/HelperBot'
-
-import { ThemeProvider } from './context/ThemeContext'
-
 function App() {
   return (
     <ThemeProvider>
+      <Toaster position="bottom-right" richColors closeButton />
       <AuthProvider>
         <NotificationProvider>
           <SidebarProvider>

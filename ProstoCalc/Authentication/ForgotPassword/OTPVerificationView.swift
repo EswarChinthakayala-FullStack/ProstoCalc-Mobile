@@ -188,10 +188,9 @@ struct OTPVerificationView: View {
                     }
                 }
             }
-            
-            NavigationLink(destination: ResetPasswordView(viewModel: viewModel), isActive: $navigateToReset) {
-                EmptyView()
-            }
+        }
+        .navigationDestination(isPresented: $navigateToReset) {
+            ResetPasswordView(viewModel: viewModel)
         }
         .navigationBarHidden(true)
         .onAppear {

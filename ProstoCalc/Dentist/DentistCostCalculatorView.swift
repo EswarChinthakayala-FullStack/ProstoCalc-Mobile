@@ -926,6 +926,9 @@ struct DentistCostCalculatorView: View {
                 sessions: sessions,
                 complexity: complexity,
                 material: material,
+                patientAge: patientAge,
+                hygieneRating: hygieneRating,
+                urgencyRating: urgencyRating,
                 customPricelist: pricelist
             )
             self.isSaved = false

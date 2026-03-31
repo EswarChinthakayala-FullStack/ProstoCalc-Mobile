@@ -17,6 +17,7 @@ import {
     explainCostAI, saveCostEstimation, analyzeTreatmentCostAI
 } from '@/services/api'
 import { useAuth } from '@/context/AuthContext'
+import { useTheme } from '@/context/ThemeContext'
 import ClinicianSidebar from '@/components/ClinicianSidebar'
 import { useSidebar } from '@/context/SidebarContext'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
@@ -407,11 +408,13 @@ const TreatmentPlanBuilder = () => {
         ), [catalog, searchTerm],
     )
 
+    const { theme } = useTheme()
+
     /* ── loading ── */
     if (isLoading) return <UniversalLoader text="CALIBRATING TREATMENT ARCHITECTURE..." />
 
     return (
-        <div className="flex h-screen bg-slate-50 dark:bg-black font-sans overflow-hidden">
+        <div className={`flex h-screen bg-slate-50 dark:bg-black font-sans overflow-hidden ${theme === 'dark' ? 'dark' : ''}`}>
             <ClinicianSidebar />
 
             <motion.div
@@ -515,7 +518,7 @@ const TreatmentPlanBuilder = () => {
                             {/* ── AI Clinical Justification (matches SmartAssistantPanel) ── */}
                             {selectedItems.length > 0 && (
                                 <div className="mt-8 sm:mt-10">
-                                    <div className="bg-teal-50/30 dark:bg-zinc-900/40 rounded-md sm:rounded-md border border-teal-100/40 dark:border-zinc-800 p-5 sm:p-6 lg:p-7">
+                                    <div className={`bg-teal-50/30 dark:bg-zinc-900/40 rounded-md sm:rounded-md border border-teal-100/40 dark:border-zinc-800 p-5 sm:p-6 lg:p-7 ${theme === 'dark' ? 'dark' : ''}`}>
                                         <div className="flex items-center justify-between mb-4">
                                             <div className="flex items-center gap-2">
                                                 <CloudLightning className="w-4 h-4 text-teal-600" />
@@ -540,14 +543,14 @@ const TreatmentPlanBuilder = () => {
                                             </div>
                                         ) : (
                                             <div>
-                                                <div className="bg-white/80 rounded-md p-4 sm:p-5 text-xs sm:text-sm font-medium text-slate-600 leading-relaxed border border-teal-50">
+                                                <div className={`bg-slate-50/80 dark:bg-zinc-950/60 rounded-md p-4 sm:p-5 text-xs sm:text-sm font-medium text-slate-600 dark:text-zinc-300 leading-relaxed border border-teal-50 dark:border-zinc-800 overflow-hidden shadow-sm ${theme === 'dark' ? 'dark' : ''}`}>
                                                     <ReactMarkdown
                                                         remarkPlugins={[remarkGfm]}
                                                         components={{
-                                                            p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
-                                                            strong: ({ node, ...props }) => <strong className="font-extrabold text-teal-700" {...props} />,
-                                                            ul: ({ node, ...props }) => <ul className="list-disc ml-4 mb-2" {...props} />,
-                                                            li: ({ node, ...props }) => <li className="mb-1" {...props} />,
+                                                            p: ({ node, ...props }) => <p className="mb-2 last:mb-0 text-slate-600 dark:text-zinc-300" {...props} />,
+                                                            strong: ({ node, ...props }) => <strong className="font-extrabold text-teal-700 dark:text-teal-400" {...props} />,
+                                                            ul: ({ node, ...props }) => <ul className="list-disc ml-4 mb-2 text-slate-600 dark:text-zinc-300" {...props} />,
+                                                            li: ({ node, ...props }) => <li className="mb-1 text-slate-600 dark:text-zinc-300" {...props} />,
                                                         }}
                                                     >
                                                         {aiExplanation}
@@ -636,7 +639,7 @@ const TreatmentPlanBuilder = () => {
                                     </div>
                                     <p className="text-[11px] sm:text-xs font-medium text-slate-400 leading-relaxed mb-4">
                                         {selectedItems.length > 0 ? (
-                                            <>AI predicts a <span className="text-indigo-400 font-extrabold">94% long-term stability</span> rate. Ensure occlusal balance during execution.</>
+                                            <>AI Ensemble predicts <span className="text-indigo-400 font-extrabold">{Math.round((aiEstimation?.confidenceScore || 0.92) * 100)}% clinical confidence</span>. Ensure occlusal balance during execution.</>
                                         ) : (
                                             'Add procedures to generate AI-driven cost analysis and clinical predictions.'
                                         )}
@@ -645,9 +648,9 @@ const TreatmentPlanBuilder = () => {
                                         <>
                                             <div className="flex items-center gap-2.5 mb-4">
                                                 <div className="flex-1 h-1.5 bg-white/10 rounded-md overflow-hidden">
-                                                    <motion.div initial={{ width: 0 }} animate={{ width: '94%' }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} className="h-full bg-gradient-to-r from-indigo-500 to-violet-400 rounded-md" />
+                                                    <motion.div initial={{ width: 0 }} animate={{ width: `${Math.round((aiEstimation?.confidenceScore || 0.92) * 100)}%` }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} className="h-full bg-gradient-to-r from-indigo-500 to-violet-400 rounded-md" />
                                                 </div>
-                                                <span className="text-[10px] font-extrabold text-indigo-400 tabular-nums">94%</span>
+                                                <span className="text-[10px] font-extrabold text-indigo-400 tabular-nums">{Math.round((aiEstimation?.confidenceScore || 0.92) * 100)}%</span>
                                             </div>
                                             <button
                                                 onClick={generateAIExplanation}
@@ -781,13 +784,13 @@ const TreatmentPlanBuilder = () => {
                                         <div className="flex gap-6 sm:gap-8">
                                             <div>
                                                 <span className="text-[8px] font-bold text-slate-400 dark:text-zinc-600 uppercase tracking-wider">Confidence</span>
-                                                <p className="text-sm font-extrabold text-teal-600 dark:text-teal-400">{Math.round((cloudResult ? 0.91 : aiEstimation.confidenceScore) * 100)}%</p>
+                                                <p className="text-sm font-extrabold text-teal-600 dark:text-teal-400">{Math.round((cloudResult ? (cloudResult.confidence_score || 0.93) : aiEstimation.confidenceScore) * 100)}%</p>
                                             </div>
                                             <div>
                                                 <span className="text-[8px] font-bold text-slate-400 dark:text-zinc-600 uppercase tracking-wider">Projected Range</span>
                                                 <p className="text-sm font-extrabold text-slate-800 dark:text-white">
-                                                    ₹{(cloudResult ? cloudResult.base_cost * 0.95 : aiEstimation.minRange).toLocaleString()} –
-                                                    ₹{(cloudResult ? cloudResult.base_cost * 1.05 : aiEstimation.maxRange).toLocaleString()}
+                                                    ₹{(cloudResult ? (cloudResult.min_range || cloudResult.base_cost * 0.92) : aiEstimation.minRange).toLocaleString()} –
+                                                    ₹{(cloudResult ? (cloudResult.max_range || cloudResult.base_cost * 1.10) : aiEstimation.maxRange).toLocaleString()}
                                                 </p>
                                             </div>
                                         </div>

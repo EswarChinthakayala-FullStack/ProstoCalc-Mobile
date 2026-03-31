@@ -12,11 +12,9 @@ struct CreateAccountView: View {
     @State private var agreeToTerms = false
     
     @State private var animateEntry = false
-    @State private var showAlert = false
-    @State private var alertMessage = ""
-    
     @State private var verificationRequest: VerificationRequest?
     @State private var activePatientID: Int?
+    @State private var activeToast: Toast? = nil
     
     struct VerificationRequest: Identifiable {
         let id = UUID()
@@ -25,12 +23,26 @@ struct CreateAccountView: View {
         let type: String
     }
     
-    // Password Validation Properties
+    // Field Validation Properties
+    var isNameValid: Bool { !fullName.isEmpty && fullName.count <= 30 && fullName.rangeOfCharacter(from: .decimalDigits) == nil }
+    var isEmailValid: Bool { email.lowercased().contains("gmail") }
+    var isPhoneValid: Bool {
+        let phoneRegex = "^[6-9]\\d{9}$"
+        return NSPredicate(format: "SELF MATCHES %@", phoneRegex).evaluate(with: phone)
+    }
+    
+    // Combined Validation
+    var isFormValid: Bool {
+        isNameValid && isEmailValid && isPhoneValid && isPasswordFormValid && agreeToTerms
+    }
+    
+    // Password Requirement Logic
     var hasMinLength: Bool { password.count >= 6 }
     var hasUppercase: Bool { password.rangeOfCharacter(from: .uppercaseLetters) != nil }
     var hasNumber: Bool { password.rangeOfCharacter(from: .decimalDigits) != nil }
     var hasSpecialChar: Bool { password.rangeOfCharacter(from: CharacterSet(charactersIn: "!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?")) != nil }
     var passwordsMatch: Bool { !password.isEmpty && password == confirmPassword }
+    
     var isPasswordFormValid: Bool { hasMinLength && hasUppercase && hasNumber && hasSpecialChar && passwordsMatch }
     
     var body: some View {
@@ -112,16 +124,21 @@ struct CreateAccountView: View {
                             
                             // Input Group
                             VStack(spacing: 14) {
-                                DentalInputView(text: $fullName, icon: "person.fill", placeholder: "Legal Full Name", isSecure: false)
+                                DentalInputView(text: $fullName, icon: "person.fill", placeholder: "Legal Full Name", isSecure: false, status: fullName.isEmpty ? .none : (isNameValid ? .success : .invalid))
                                     .textContentType(.name)
+                                    .onChange(of: fullName) { newValue in
+                                        if newValue.count > 30 {
+                                            fullName = String(newValue.prefix(30))
+                                        }
+                                    }
                                 
-                                DentalInputView(text: $email, icon: "envelope.fill", placeholder: "Email Address", isSecure: false, keyboardType: .emailAddress, autocapitalization: .never)
+                                DentalInputView(text: $email, icon: "envelope.fill", placeholder: "Email Address", isSecure: false, keyboardType: .emailAddress, autocapitalization: .never, status: email.isEmpty ? .none : (isEmailValid ? .success : .invalid))
                                     .textContentType(.emailAddress)
                                 
-                                DentalInputView(text: $phone, icon: "phone.fill", placeholder: "Mobile Number", isSecure: false)
+                                DentalInputView(text: $phone, icon: "phone.fill", placeholder: "Mobile Number", isSecure: false, status: phone.isEmpty ? .none : (isPhoneValid ? .success : .invalid))
                                     .keyboardType(.phonePad)
                                 
-                                DentalInputView(text: $password, icon: "lock.fill", placeholder: "Create Security Key", isSecure: true)
+                                DentalInputView(text: $password, icon: "lock.fill", placeholder: "Create Security Key", isSecure: true, status: password.isEmpty ? .none : (isPasswordFormValid ? .success : .none))
                                 
                                 // Real-time Validation UI
                                 VStack(alignment: .leading, spacing: 6) {
@@ -133,7 +150,7 @@ struct CreateAccountView: View {
                                 .padding(.horizontal, 10)
                                 .padding(.top, 4)
                                 
-                                DentalInputView(text: $confirmPassword, icon: "checkmark.shield.fill", placeholder: "Confirm Security Key", isSecure: true)
+                                DentalInputView(text: $confirmPassword, icon: "checkmark.shield.fill", placeholder: "Confirm Security Key", isSecure: true, status: confirmPassword.isEmpty ? .none : (passwordsMatch ? .success : .invalid))
                                 
                                 PasswordRequirementRow(isMet: passwordsMatch, text: "Passwords match")
                                     .padding(.horizontal, 10)
@@ -165,11 +182,24 @@ struct CreateAccountView: View {
                             
                             // 3. Action Button
                             Button(action: {
-                                if !isPasswordFormValid {
-                                    alertMessage = "Security Protocol: Please meet all password security requirements."
-                                    showAlert = true
+                                if !isNameValid {
+                                    activeToast = Toast(message: "Validation: Name must be 1-30 characters and contain no numbers.", type: .error)
                                     return
                                 }
+                                if !isEmailValid {
+                                    activeToast = Toast(message: "Validation: Only @gmail.com addresses are permitted for this protocol.", type: .error)
+                                    return
+                                }
+                                if !isPhoneValid {
+                                    activeToast = Toast(message: "Validation: Phone must be 10 digits starting with 6-9.", type: .error)
+                                    return
+                                }
+                                if !isPasswordFormValid {
+                                    activeToast = Toast(message: "Security Protocol: Please meet all password requirements.", type: .error)
+                                    return
+                                }
+                                
+                                activeToast = Toast(message: "Synchronizing clinical profile...", type: .info)
                                 
                                 let patientData = [
                                     "full_name": fullName,
@@ -188,20 +218,16 @@ struct CreateAccountView: View {
                                                 else { idInt = 0 }
                                                 
                                                 UserDefaults.standard.set(idInt, forKey: "patient_id")
-                                                
-                                                alertMessage = "Registration successful. Welcome to ProstoCalc!"
-                                                showAlert = true
+                                                activeToast = Toast(message: "Welcome to ProstoCalc!", type: .success)
                                                 
                                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                                     dismiss()
                                                 }
                                             } else {
-                                                alertMessage = "Registration successful. Please sign in."
-                                                showAlert = true
+                                                activeToast = Toast(message: "Registration successful. Please sign in.", type: .success)
                                             }
                                         case .failure(let error):
-                                            alertMessage = "Error: \(error.localizedDescription)"
-                                            showAlert = true
+                                            activeToast = Toast(message: "Error: \(error.localizedDescription)", type: .error)
                                         }
                                     }
                                 }
@@ -213,22 +239,15 @@ struct CreateAccountView: View {
                                     .frame(height: 56)
                                     .background(
                                         LinearGradient(
-                                            colors: (agreeToTerms && isPasswordFormValid) ? [.dentalDarkBlue, .blue] : [.gray.opacity(0.4), .gray.opacity(0.6)],
+                                            colors: (agreeToTerms && isFormValid) ? [.dentalDarkBlue, .blue] : [.gray.opacity(0.4), .gray.opacity(0.6)],
                                             startPoint: .leading,
                                             endPoint: .trailing
                                         )
                                     )
                                     .clipShape(RoundedRectangle(cornerRadius: 18))
-                                    .shadow(color: (agreeToTerms && isPasswordFormValid) ? .blue.opacity(0.3) : .clear, radius: 15, y: 8)
+                                    .shadow(color: (agreeToTerms && isFormValid) ? .blue.opacity(0.3) : .clear, radius: 15, y: 8)
                             }
-                            .alert(isPresented: $showAlert) {
-                                Alert(title: Text("Registration"), message: Text(alertMessage), dismissButton: .default(Text("OK")) {
-                                    if alertMessage.contains("successfully") {
-                                        dismiss()
-                                    }
-                                })
-                            }
-                            .disabled(!agreeToTerms || !isPasswordFormValid)
+                            .disabled(!agreeToTerms)
                             .buttonStyle(ScaleButtonStyle())
                         }
                         .padding(26)
@@ -284,6 +303,7 @@ struct CreateAccountView: View {
                 }
             }
         }
+        .toastView(toast: $activeToast)
         .navigationBarHidden(true)
         .onAppear {
             withAnimation(.spring(response: 0.7, dampingFraction: 0.8)) {

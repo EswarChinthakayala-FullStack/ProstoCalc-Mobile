@@ -123,9 +123,8 @@ struct ResetPasswordView: View {
                     }
                     .padding(.top, 20)
                 }
-                
-                NavigationLink(destination: PasswordResetSuccessView(viewModel: viewModel), isActive: $navigateToSuccess) {
-                    EmptyView()
+                .navigationDestination(isPresented: $navigateToSuccess) {
+                    PasswordResetSuccessView(viewModel: viewModel)
                 }
             }
             

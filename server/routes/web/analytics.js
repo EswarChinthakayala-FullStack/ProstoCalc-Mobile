@@ -88,10 +88,16 @@ router.get('/get_streak_analytics', async (req, res) => {
             // Weight: 60% overall completion, 40% recent performance
             let consistencyScore = Math.round(((completedDays / totalDaysInRange) * 60) + (recentPerformance * 40));
             
-            // Safety cap/adjustment for new streaks
-            if (currentStreak > 0 && consistencyScore < 5 && completedDays > 0) {
-                // If they are on an active streak, don't show a near-zero score just because they are new
-                consistencyScore = Math.max(consistencyScore, Math.min(100, currentStreak * 10));
+            // Safety cap/adjustment for new streaks (first 7 days)
+            if (currentStreak > 0 && completedDays > 0) {
+                // For new users, we want to be more encouraging. 
+                // If they have done everything since they started, show high consistency.
+                const daysSinceFirstLog = Math.max(1, logs.length);
+                const perfectStreakBonus = (currentStreak >= daysSinceFirstLog) ? 40 : 0;
+                
+                // Boost: currentStreak * 15 (capped at 90) + bonus
+                const boost = Math.min(90, currentStreak * 15) + perfectStreakBonus;
+                consistencyScore = Math.max(consistencyScore, Math.min(100, boost));
             }
 
             const lastSyncDate = allLogs.length > 0 ? allLogs[0].log_date : null;

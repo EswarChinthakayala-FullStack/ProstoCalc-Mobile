@@ -27,10 +27,11 @@ const stagger = (i) => ({ ...fadeUp, transition: { ...fadeUp.transition, delay: 
 
 const AboutPage = () => {
   const team = [
-    { name: 'Dr. Ananya Mehta', role: 'Chief Prosthodontist', img: imgTeam1 },
+    { name: 'Prasanna', role: 'Chief Prosthodontist', img: imgTeam1 },
     { name: 'Rahul Sharma', role: 'Lead Engineer', img: imgTeam2 },
-    { name: 'Dr. Priya Desai', role: 'Clinical Advisor', img: imgTeam3 },
-    { name: 'Arjun Kapoor', role: 'AI/ML Engineer', img: imgTeam4 },
+     { name: 'Eswar', role: 'Developer', img: imgTeam3 },
+    { name: 'Dr. Priya Desai', role: 'Clinical Advisor', img: imgTeam4 },
+   
   ]
 
   const milestones = [
@@ -244,8 +245,8 @@ const AboutPage = () => {
             <div className="space-y-3 sm:space-y-4">
               <h4 className="text-[10px] sm:text-xs font-black tracking-widest uppercase" style={{ color: C.darkBlue }}>Contact</h4>
               <div className="flex items-center gap-2 sm:gap-3"><img src={imgFooterCall} className="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-50" alt="" /><span className="text-xs sm:text-sm text-slate-500">+91 98765 43210</span></div>
-              <div className="flex items-center gap-2 sm:gap-3"><img src={imgFooterLocation} className="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-50" alt="" /><span className="text-xs sm:text-sm text-slate-500">Mumbai, India</span></div>
-              <div className="flex items-center gap-2 sm:gap-3"><img src={imgFooterTime} className="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-50" alt="" /><span className="text-xs sm:text-sm text-slate-500">Mon - Sat: 9AM - 8PM</span></div>
+              <div className="flex items-center gap-2 sm:gap-3"><img src={imgFooterLocation} className="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-50" alt="" /><span className="text-xs sm:text-sm text-slate-500">Chennai, India</span></div>
+              <div className="flex items-center gap-2 sm:gap-3"><img src={imgFooterTime} className="w-3.5 h-3.5 sm:w-4 sm:h-4 opacity-50" alt="" /><span className="text-xs sm:text-sm text-slate-500">Mon - Sun: 9AM - 8PM</span></div>
             </div>
           </div>
           <Separator className="mb-6 sm:mb-8" />
