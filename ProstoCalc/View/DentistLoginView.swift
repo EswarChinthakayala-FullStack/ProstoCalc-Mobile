@@ -57,14 +57,14 @@ struct DentistLoginView: View {
                     .zIndex(1)
                     
                     HStack {
-                        Image("image2")
+                        Image("image1")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 50, height: 50)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.teal.opacity(0.3), lineWidth: 2))
                         Spacer()
-                        Image("image1")
+                        Image("image2")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 50, height: 50)
