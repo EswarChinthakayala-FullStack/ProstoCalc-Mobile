@@ -63,7 +63,6 @@ struct PatientLoginView: View {
                     .padding(.top, 10) 
                     .zIndex(1)
                     
-                    // MARK: - Top Images (Left and Right)
                     HStack {
                         Image("image1")
                             .resizable()
@@ -71,9 +70,7 @@ struct PatientLoginView: View {
                             .frame(width: 50, height: 50)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.blue.opacity(0.3), lineWidth: 2))
-                        
                         Spacer()
-                        
                         Image("image2")
                             .resizable()
                             .scaledToFit()
@@ -87,6 +84,27 @@ struct PatientLoginView: View {
                     
                     // MARK: - Main Content Card
                     VStack(spacing: 30) {
+                        
+                        // 1. Icon / Header (Refined for Future Tech look)
+                        VStack(spacing: 20) {
+                            ZStack {
+                                // Tech-ring behind icon
+                                Circle()
+                                    .stroke(AngularGradient(colors: [.blue, .cyan, .blue], center: .center), lineWidth: 1)
+                                    .frame(width: 90, height: 90)
+                                    .opacity(0.3)
+                                
+                                Circle()
+                                    .fill(Color.blue.opacity(0.05))
+                                    .frame(width: 75, height: 75)
+                                
+                                Image(systemName: "person.crop.circle.badge.checkmark")
+                                    .font(.system(size: 36, weight: .light))
+                                    .foregroundStyle(
+                                        LinearGradient(colors: [.blue, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                    )
+                                    .shadow(color: .blue.opacity(0.4), radius: 8)
+                            }
                             
                             VStack(spacing: 8) {
                                 Text("Patient Portal")
@@ -330,15 +348,12 @@ struct PatientLoginView: View {
                         .foregroundColor(.gray.opacity(0.4))
                     }
                     .padding(.bottom, 20)
-                        
-                        // Privacy Policy Link
-                        HStack(spacing: 4) {
-                            Link("Privacy Policy", destination: URL(string: "https://eswarchinthakayala-fullstack.github.io/ProstoCalc-Mobile/index.html")!)
-                        }
+                    
+                    Link("Privacy Policy", destination: URL(string: "https://eswarchinthakayala-fullstack.github.io/ProstoCalc-Mobile/index.html")!)
                         .font(.system(size: 10))
                         .foregroundColor(.blue.opacity(0.7))
-                    }
-                    .padding(.top, 60)
+                }
+                .padding(.top, 60)
             }
         }
         .toastView(toast: $activeToast)

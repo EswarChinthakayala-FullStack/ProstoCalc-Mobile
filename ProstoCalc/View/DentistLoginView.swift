@@ -56,7 +56,6 @@ struct DentistLoginView: View {
                     .padding(.top, 10)
                     .zIndex(1)
                     
-                    // MARK: - Top Images (Left and Right)
                     HStack {
                         Image("image2")
                             .resizable()
@@ -64,9 +63,7 @@ struct DentistLoginView: View {
                             .frame(width: 50, height: 50)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.teal.opacity(0.3), lineWidth: 2))
-                        
                         Spacer()
-                        
                         Image("image1")
                             .resizable()
                             .scaledToFit()
@@ -80,6 +77,32 @@ struct DentistLoginView: View {
                     
                     // MARK: - Main Content Card
                     VStack(spacing: 30) {
+                        
+                        // 1. Header (Clinician Style - Technical)
+                        VStack(spacing: 20) {
+                            ZStack {
+                                // Hexagon-mesh background
+                                Image(systemName: "hexagon.fill")
+                                    .font(.system(size: 100))
+                                    .foregroundStyle(Color.teal.opacity(0.05))
+                                
+                                // Glowing Ring
+                                Circle()
+                                    .stroke(AngularGradient(colors: [.teal, .dentalDarkBlue, .teal], center: .center), lineWidth: 1)
+                                    .frame(width: 85, height: 85)
+                                    .opacity(0.3)
+                                
+                                Image(systemName: "stethoscope")
+                                    .font(.system(size: 36, weight: .light))
+                                    .foregroundStyle(
+                                        LinearGradient(
+                                            colors: [.dentalDarkBlue, .teal],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .shadow(color: .teal.opacity(0.4), radius: 10)
+                            }
                             
                             VStack(spacing: 8) {
                                 Text("Clinician Access")
@@ -269,15 +292,12 @@ struct DentistLoginView: View {
                         .foregroundColor(.teal.opacity(0.6))
                     }
                     .padding(.bottom, 20)
-                        
-                        // Privacy Policy Link
-                        HStack(spacing: 4) {
-                            Link("Privacy Policy", destination: URL(string: "https://eswarchinthakayala-fullstack.github.io/ProstoCalc-Mobile/index.html")!)
-                        }
+                    
+                    Link("Privacy Policy", destination: URL(string: "https://eswarchinthakayala-fullstack.github.io/ProstoCalc-Mobile/index.html")!)
                         .font(.system(size: 10))
                         .foregroundColor(.teal.opacity(0.7))
-                    }
-                    .padding(.top, 60)
+                }
+                .padding(.top, 60)
             }
         }
         .toastView(toast: $activeToast)

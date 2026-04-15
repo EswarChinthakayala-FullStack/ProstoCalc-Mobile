@@ -72,26 +72,6 @@ struct DentistCreateAccountView: View {
                 .padding(.top, 10)
                 .zIndex(1)
                 
-                // MARK: - Top Images (Left and Right)
-                HStack {
-                    Image("image2")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.teal.opacity(0.3), lineWidth: 2))
-                    
-                    Spacer()
-                    
-                    Image("image1")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.teal.opacity(0.3), lineWidth: 2))
-                }
-                .padding(.horizontal, 20)
-                
                 // MARK: - Scrollable Form
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
@@ -108,11 +88,16 @@ struct DentistCreateAccountView: View {
                                     .fill(Color.teal.opacity(0.05))
                                     .frame(width: 80, height: 80)
                                 
-                                Image("image2")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 75, height: 75)
-                                    .clipShape(Circle())
+                                Image(systemName: "staroflife.fill")
+                                    .font(.system(size: 36, weight: .thin))
+                                    .foregroundStyle(
+                                        LinearGradient(
+                                            colors: [.dentalDarkBlue, .teal],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .shadow(color: .teal.opacity(0.4), radius: 10)
                             }
                             
                             VStack(spacing: 8) {
@@ -306,12 +291,9 @@ struct DentistCreateAccountView: View {
                     .offset(y: animateEntry ? 0 : 40)
                     .opacity(animateEntry ? 1 : 0)
                     
-                    // Privacy Policy Link
-                    HStack(spacing: 4) {
-                        Link("Privacy Policy", destination: URL(string: "https://eswarchinthakayala-fullstack.github.io/ProstoCalc-Mobile/index.html")!)
-                    }
-                    .font(.system(size: 10))
-                    .foregroundColor(.teal.opacity(0.7))
+                    Link("Privacy Policy", destination: URL(string: "https://eswarchinthakayala-fullstack.github.io/ProstoCalc-Mobile/index.html")!)
+                        .font(.system(size: 10))
+                        .foregroundColor(.teal.opacity(0.7))
                 }
             }
         }

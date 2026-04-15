@@ -74,26 +74,6 @@ struct CreateAccountView: View {
                 .padding(.top, 10)
                 .zIndex(1)
                 
-                // MARK: - Top Images (Left and Right)
-                HStack {
-                    Image("image1")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.blue.opacity(0.3), lineWidth: 2))
-                    
-                    Spacer()
-                    
-                    Image("image2")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.blue.opacity(0.3), lineWidth: 2))
-                }
-                .padding(.horizontal, 20)
-                
                 // MARK: - Scrollable Form Content
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
@@ -110,11 +90,16 @@ struct CreateAccountView: View {
                                     .fill(Color.blue.opacity(0.05))
                                     .frame(width: 80, height: 80)
                                 
-                                Image("image1")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 75, height: 75)
-                                    .clipShape(Circle())
+                                Image(systemName: "doc.text.fill.viewfinder")
+                                    .font(.system(size: 36, weight: .thin))
+                                    .foregroundStyle(
+                                        LinearGradient(
+                                            colors: [.dentalDarkBlue, .dentalCyan],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .shadow(color: .dentalCyan.opacity(0.4), radius: 10)
                             }
                             
                             VStack(spacing: 8) {
@@ -312,12 +297,9 @@ struct CreateAccountView: View {
                         // Bottom Spacer
                         Spacer().frame(height: 40)
                         
-                        // Privacy Policy Link
-                        HStack(spacing: 4) {
-                            Link("Privacy Policy", destination: URL(string: "https://eswarchinthakayala-fullstack.github.io/ProstoCalc-Mobile/index.html")!)
-                        }
-                        .font(.system(size: 10))
-                        .foregroundColor(.blue.opacity(0.7))
+                        Link("Privacy Policy", destination: URL(string: "https://eswarchinthakayala-fullstack.github.io/ProstoCalc-Mobile/index.html")!)
+                            .font(.system(size: 10))
+                            .foregroundColor(.blue.opacity(0.7))
                     }
                     .padding(.top, 60)
                     .offset(y: animateEntry ? 0 : 40)
