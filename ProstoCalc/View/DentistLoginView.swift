@@ -56,31 +56,30 @@ struct DentistLoginView: View {
                     .padding(.top, 10)
                     .zIndex(1)
                     
+                    // MARK: - Top Images (Left and Right)
+                    HStack {
+                        Image("image2")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.teal.opacity(0.3), lineWidth: 2))
+                        
+                        Spacer()
+                        
+                        Image("image1")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.teal.opacity(0.3), lineWidth: 2))
+                    }
+                    .padding(.horizontal, 20)
+                    
                     Spacer().frame(height: 40)
                     
                     // MARK: - Main Content Card
                     VStack(spacing: 30) {
-                        
-                        // 1. Header (Clinician Style - Technical)
-                        VStack(spacing: 20) {
-                            ZStack {
-                                // Hexagon-mesh background
-                                Image(systemName: "hexagon.fill")
-                                    .font(.system(size: 100))
-                                    .foregroundStyle(Color.teal.opacity(0.05))
-                                
-                                // Glowing Ring
-                                Circle()
-                                    .stroke(AngularGradient(colors: [.teal, .dentalDarkBlue, .teal], center: .center), lineWidth: 1)
-                                    .frame(width: 85, height: 85)
-                                    .opacity(0.3)
-                                
-                                Image("image2")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 75, height: 75)
-                                    .clipShape(Circle())
-                            }
                             
                             VStack(spacing: 8) {
                                 Text("Clinician Access")

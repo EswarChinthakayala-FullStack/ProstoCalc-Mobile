@@ -63,30 +63,30 @@ struct PatientLoginView: View {
                     .padding(.top, 10) 
                     .zIndex(1)
                     
+                    // MARK: - Top Images (Left and Right)
+                    HStack {
+                        Image("image1")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.blue.opacity(0.3), lineWidth: 2))
+                        
+                        Spacer()
+                        
+                        Image("image2")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.blue.opacity(0.3), lineWidth: 2))
+                    }
+                    .padding(.horizontal, 20)
+                    
                     Spacer().frame(height: 40)
                     
                     // MARK: - Main Content Card
                     VStack(spacing: 30) {
-                        
-                        // 1. Icon / Header (Refined for Future Tech look)
-                        VStack(spacing: 20) {
-                            ZStack {
-                                // Tech-ring behind icon
-                                Circle()
-                                    .stroke(AngularGradient(colors: [.blue, .cyan, .blue], center: .center), lineWidth: 1)
-                                    .frame(width: 90, height: 90)
-                                    .opacity(0.3)
-                                
-                                Circle()
-                                    .fill(Color.blue.opacity(0.05))
-                                    .frame(width: 75, height: 75)
-                                
-                                Image("image1")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 75, height: 75)
-                                    .clipShape(Circle())
-                            }
                             
                             VStack(spacing: 8) {
                                 Text("Patient Portal")
