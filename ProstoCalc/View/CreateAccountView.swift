@@ -74,6 +74,26 @@ struct CreateAccountView: View {
                 .padding(.top, 10)
                 .zIndex(1)
                 
+                // MARK: - Top Images (Left and Right)
+                HStack {
+                    Image("image1")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.blue.opacity(0.3), lineWidth: 2))
+                    
+                    Spacer()
+                    
+                    Image("image2")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.blue.opacity(0.3), lineWidth: 2))
+                }
+                .padding(.horizontal, 20)
+                
                 // MARK: - Scrollable Form Content
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 0) {
