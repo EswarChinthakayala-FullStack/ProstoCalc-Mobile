@@ -10,9 +10,22 @@
 		B781DD392F3EFE4000FCB6E9 /* ProstoCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProstoCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		319952522F8F7BE800D47C56 /* Exceptions for "ProstoCalc" folder in "ProstoCalc" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B7E9E75A2F2DB31E00F5BD2C /* ProstoCalc */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B7E9E75D2F2DB31E00F5BD2C /* ProstoCalc */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				319952522F8F7BE800D47C56 /* Exceptions for "ProstoCalc" folder in "ProstoCalc" target */,
+			);
 			path = ProstoCalc;
 			sourceTree = "<group>";
 		};
@@ -250,6 +263,7 @@
 				DEVELOPMENT_TEAM = J93L8HVLVU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ProstoCalc/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to find nearby clinics.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -283,6 +297,7 @@
 				DEVELOPMENT_TEAM = J93L8HVLVU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ProstoCalc/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to find nearby clinics.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
