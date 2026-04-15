@@ -88,16 +88,11 @@ struct DentistCreateAccountView: View {
                                     .fill(Color.teal.opacity(0.05))
                                     .frame(width: 80, height: 80)
                                 
-                                Image(systemName: "staroflife.fill")
-                                    .font(.system(size: 36, weight: .thin))
-                                    .foregroundStyle(
-                                        LinearGradient(
-                                            colors: [.dentalDarkBlue, .teal],
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        )
-                                    )
-                                    .shadow(color: .teal.opacity(0.4), radius: 10)
+                                Image("image2")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 75, height: 75)
+                                    .clipShape(Circle())
                             }
                             
                             VStack(spacing: 8) {

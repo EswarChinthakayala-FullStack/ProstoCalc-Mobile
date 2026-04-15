@@ -90,16 +90,11 @@ struct CreateAccountView: View {
                                     .fill(Color.blue.opacity(0.05))
                                     .frame(width: 80, height: 80)
                                 
-                                Image(systemName: "doc.text.fill.viewfinder")
-                                    .font(.system(size: 36, weight: .thin))
-                                    .foregroundStyle(
-                                        LinearGradient(
-                                            colors: [.dentalDarkBlue, .dentalCyan],
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        )
-                                    )
-                                    .shadow(color: .dentalCyan.opacity(0.4), radius: 10)
+                                Image("image1")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 75, height: 75)
+                                    .clipShape(Circle())
                             }
                             
                             VStack(spacing: 8) {

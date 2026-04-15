@@ -81,12 +81,11 @@ struct PatientLoginView: View {
                                     .fill(Color.blue.opacity(0.05))
                                     .frame(width: 75, height: 75)
                                 
-                                Image(systemName: "person.crop.circle.badge.checkmark")
-                                    .font(.system(size: 36, weight: .light))
-                                    .foregroundStyle(
-                                        LinearGradient(colors: [.blue, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
-                                    )
-                                    .shadow(color: .blue.opacity(0.4), radius: 8)
+                                Image("image1")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 75, height: 75)
+                                    .clipShape(Circle())
                             }
                             
                             VStack(spacing: 8) {

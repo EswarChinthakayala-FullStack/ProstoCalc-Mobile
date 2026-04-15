@@ -75,16 +75,11 @@ struct DentistLoginView: View {
                                     .frame(width: 85, height: 85)
                                     .opacity(0.3)
                                 
-                                Image(systemName: "stethoscope")
-                                    .font(.system(size: 36, weight: .light))
-                                    .foregroundStyle(
-                                        LinearGradient(
-                                            colors: [.dentalDarkBlue, .teal],
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        )
-                                    )
-                                    .shadow(color: .teal.opacity(0.4), radius: 10)
+                                Image("image2")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 75, height: 75)
+                                    .clipShape(Circle())
                             }
                             
                             VStack(spacing: 8) {
