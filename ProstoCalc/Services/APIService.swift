@@ -1,8 +1,13 @@
 import Foundation
 
 public struct APIConfig {
-    // Single source of truth for the local network endpoint
+    #if targetEnvironment(simulator)
+    // Simulator: use localhost
+    public static let baseURL = "http://localhost:3000"
+    #else
+    // Real device: use local network IP (change as needed)
     public static let baseURL = "http://172.25.90.196:3000"
+    #endif
     
     // AI Endpoint helper
     public static var aiURL: URL {
