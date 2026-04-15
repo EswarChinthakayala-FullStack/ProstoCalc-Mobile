@@ -4,6 +4,26 @@ ProstoCalc is a state-of-the-art **Clinical Cost Intelligence Platform** designe
 
 ---
 
+## 📱 Mobile App (iOS)
+
+ProstoCalc is now available as a native **iOS application** built with **SwiftUI**, providing seamless access for dental practitioners and patients on the go.
+
+### Features
+- **Dual Login System:** Separate portals for Patients and Dentists/Clinicians
+- **Secure Authentication:** HIPAA-compliant security with AES-256 encryption
+- **AI-Powered Cost Estimation:** On-device CoreML integration for instant estimates
+- **Treatment Tracking:** Monitor clinical journeys and treatment progress
+- **Health Score Monitoring:** DynamicDental Health Score (0-100) based on patient data
+
+### Screens
+- **Patient Portal:** Login, Registration, Dashboard, Clinical Timeline, Cost Estimator
+- **Dentist Portal:** Login, Registration, Patient Management, AI Hybrid Cost Estimator, Treatment Planning
+
+### Privacy Policy
+Access our privacy policy at: https://eswarchinthakayala-fullstack.github.io/ProstoCalc-Mobile/index.html
+
+---
+
 ## 🚀 Core Value Proposition
 
 In traditional dentistry, cost estimation is often static or arbitrary. ProstoCalc transforms this into a **Data-Driven Clinical Decision**, providing:
@@ -26,12 +46,12 @@ The system uses a sophisticated **6-algorithm ensemble** for high-fidelity clini
 
 ### 2. Clinical Intelligence (LLM)
 - **Engine:** Integrates **Llama-3** and **HuggingFace Transformers** to generate "Neural Clinical Justifications."
-- **Functionality:** It converts raw numerical data (₹ amounts, complexity scores) into a professional medical report that addresses the patient by name and explains the clinical necessity of the selected materials and procedures.
+- **Functionality:** It converts raw numerical data into a professional medical report that addresses the patient by name and explains the clinical necessity of the selected materials and procedures.
 
 ### 3. Predictive Analytics
 - **Dental Health Score (0-100):** A dynamic index calculated using patient hygiene, age, and urgency levels.
-- **Escalation Predictor:** Uses high-urgency and complexity parameters to predict potential cost surges if the procedure is delayed (e.g., "15% surge predicted if delayed >30 days").
-- **Confidence Scoring:** Every ML prediction is accompanied by a confidence score based on the variance (standard deviation) between different decision trees.
+- **Escalation Predictor:** Uses high-urgency and complexity parameters to predict potential cost surges if the procedure is delayed.
+- **Confidence Scoring:** Every ML prediction is accompanied by a confidence score based on the variance between different decision trees.
 
 ---
 
@@ -39,8 +59,9 @@ The system uses a sophisticated **6-algorithm ensemble** for high-fidelity clini
 
 | Layer | Technologies |
 | :--- | :--- |
-| **Frontend** | React 18, Vite, Framer Motion (Animations), Lucide Icons, Shadcn/UI |
-| **Backend** | Node.js (Express), MySQL (Database), RESTful API |
+| **Frontend** | React 18, Vite, Framer Motion, Lucide Icons, Shadcn/UI |
+| **Mobile (iOS)** | SwiftUI, CoreML, Combine, Xcode |
+| **Backend** | Node.js (Express), MySQL, RESTful API |
 | **Machine Learning** | `ml-random-forest`, `ml-matrix`, ONNX Runtime |
 | **Artificial Intelligence** | Llama/Mistral, HuggingFace Transformers |
 | **Data Visualization** | Custom SVG Gauges, Dynamic Progress Indicators |
@@ -50,26 +71,35 @@ The system uses a sophisticated **6-algorithm ensemble** for high-fidelity clini
 ## 🔄 System Flow & Logic
 
 1.  **Clinical Input:** The clinician enters procedure type, units (teeth), sessions, bio-complexity, and material grade.
-2.  **Ensemble Simulation:** The `CostEstimatorService` runs an immediate 6-algorithm ensemble simulation (Regression, GBDT, Monte Carlo, Bayesian, KNN).
-3.  **Cloud Analysis:** The Backend mirrors this ensemble logic for server-side verification and cloud-grade clinical predictions.
+2.  **Ensemble Simulation:** The `CostEstimatorService` runs an immediate 6-algorithm ensemble simulation.
+3.  **Cloud Analysis:** The Backend mirrors this ensemble logic for server-side verification.
 4.  **Enrichment:**
     - AI generates a **Clinical Justification**.
     - The **Escalation Predictor** assesses delay-risks.
     - The **Health Score** is updated.
-5.  **Logging & Analytics:** The final "Intelligence Log" is committed to the database, where it serves as training data for future predictions.
+5.  **Logging & Analytics:** The final "Intelligence Log" is committed to the database.
 
 ---
 
 ## 📈 Key Features
 
 - **Live Price Intelligence:** Watch prices adjust dynamically as you slide complexity or material grade.
-- **Premium Analysis Card:** A glassmorphic UI displaying the AI report, health score gauge, and risk factors.
+- **Premium Analysis Card:** Glassmorphic UI displaying the AI report, health score gauge, and risk factors.
 - **Treatment Catalog:** Fully customizable per-dentist pricing with color-coded categories.
-- **Responsive Dashboard:** Optimized for both desktop clinical use and mobile patient review.
+- **Responsive Dashboard:** Optimized for both desktop and mobile (iOS) use.
+- **Native iOS Experience:** Full SwiftUI integration with smooth animations.
 
 ---
 
 ## 📦 Installation & Setup
+
+### iOS App (Xcode)
+```bash
+# Open in Xcode
+open ProstoCalc.xcworkspace
+# Select your team in Signing & Capabilities
+# Build and run on simulator or device
+```
 
 ### Frontend
 ```bash
@@ -84,6 +114,12 @@ cd server
 npm install
 node index.js
 ```
+
+---
+
+## 📍 Location
+
+**Clinic:** Chennai, Tamil Nadu, India
 
 ---
 
