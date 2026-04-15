@@ -40,7 +40,27 @@
         line-height: 1.75;
         color: var(--ink);
         background: #f1f5f9;
-        padding: 32px 16px 80px;
+        padding: 24px 12px 60px;
+      }
+
+      /* ── Mobile Responsive ── */
+      @media (max-width: 640px) {
+        body { font-size: 14px; padding: 16px 12px 40px; }
+        .page-wrap { max-width: 100%; }
+        .header h1 { font-size: 1.75rem; }
+        .header p { font-size: 0.9rem; }
+        .section h2 { font-size: 1.15rem; }
+        .section h3 { font-size: 1rem; }
+        .highlight { padding: 12px; }
+        .contact-grid { grid-template-columns: 1fr; gap: 12px; }
+        .feature-grid { grid-template-columns: 1fr; }
+        .content-card { padding: 16px; }
+        .algorithm-table { display: block; overflow-x: auto; }
+        .algorithm-table th, .algorithm-table td { padding: 8px; font-size: 13px; }
+        .project-hero { padding: 20px 16px; }
+        .hero-tag { font-size: 10px; padding: 4px 10px; }
+        .cta-group { flex-direction: column; gap: 8px; }
+        .cta-btn { width: 100%; text-align: center; }
       }
 
       /* ── Layout ── */
