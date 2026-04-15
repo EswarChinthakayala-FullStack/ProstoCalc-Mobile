@@ -1,0 +1,1935 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProstoCalc – Privacy Policy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --ink: #0f1523;
+        --ink-muted: #4a5568;
+        --ink-faint: #718096;
+        --sky: #1a56db;
+        --sky-light: #ebf2ff;
+        --sky-mid: #bfdbfe;
+        --teal: #0d9488;
+        --teal-light: #f0fdfa;
+        --amber: #d97706;
+        --amber-light: #fffbeb;
+        --red: #dc2626;
+        --red-light: #fef2f2;
+        --surface: #ffffff;
+        --surface-2: #f8fafc;
+        --border: #e2e8f0;
+        --border-strong: #cbd5e1;
+        --radius: 10px;
+        --radius-lg: 16px;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: 'DM Sans', -apple-system, sans-serif;
+        font-size: 15px;
+        line-height: 1.75;
+        color: var(--ink);
+        background: #f1f5f9;
+        padding: 32px 16px 80px;
+      }
+
+      /* ── Layout ── */
+      .page-wrap {
+        max-width: 860px;
+        margin: 0 auto;
+      }
+
+      /* ── Hero banner ── */
+      .hero {
+        background: linear-gradient(135deg, #1a3a6b 0%, #1a56db 60%, #0d9488 100%);
+        border-radius: var(--radius-lg);
+        padding: 48px 40px 40px;
+        color: #fff;
+        margin-bottom: 32px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 100px;
+        padding: 4px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        position: relative;
+      }
+      .hero-badge::before { content: '🔒'; }
+      .hero h1 {
+        font-family: 'DM Serif Display', Georgia, serif;
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        font-weight: 400;
+        line-height: 1.15;
+        margin-bottom: 14px;
+        position: relative;
+      }
+      .hero-sub {
+        font-size: 15px;
+        opacity: 0.85;
+        max-width: 540px;
+        position: relative;
+      }
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 28px;
+        position: relative;
+      }
+      .hero-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12.5px;
+        opacity: 0.8;
+      }
+      .hero-meta-item span { font-size: 15px; }
+
+      /* ── TOC ── */
+      .toc-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 28px 32px;
+        margin-bottom: 32px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      }
+      .toc-card h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: var(--ink);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .toc-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 6px;
+      }
+      .toc-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--sky);
+        font-size: 13.5px;
+        font-weight: 500;
+        transition: background 0.15s;
+      }
+      .toc-link:hover { background: var(--sky-light); }
+      .toc-num {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        background: var(--sky-light);
+        color: var(--sky);
+        font-size: 11px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      /* ── Cards ── */
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 32px 36px;
+        margin-bottom: 24px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      }
+
+      /* ── Section headings ── */
+      .section-head {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .section-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--sky-light);
+        color: var(--sky);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .section-icon.teal  { background: var(--teal-light); color: var(--teal); }
+      .section-icon.amber { background: var(--amber-light); color: var(--amber); }
+      .section-icon.red   { background: var(--red-light); color: var(--red); }
+      .section-meta { flex: 1; }
+      .section-meta .section-num {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--sky);
+        display: block;
+        margin-bottom: 3px;
+      }
+      .section-meta h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.35rem;
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.3;
+      }
+
+      /* ── Typography ── */
+      p { color: var(--ink-muted); margin-bottom: 14px; }
+      p:last-child { margin-bottom: 0; }
+
+      h3 {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--ink);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin: 24px 0 10px;
+      }
+      h3:first-child { margin-top: 0; }
+
+      ul, ol {
+        margin-left: 20px;
+        margin-bottom: 14px;
+      }
+      li {
+        color: var(--ink-muted);
+        margin-bottom: 8px;
+      }
+      li strong { color: var(--ink); }
+
+      /* ── Callout boxes ── */
+      .callout {
+        display: flex;
+        gap: 14px;
+        padding: 16px 18px;
+        border-radius: 10px;
+        margin: 20px 0;
+        border: 1px solid transparent;
+      }
+      .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+      .callout-body { flex: 1; font-size: 14px; line-height: 1.65; color: var(--ink-muted); }
+      .callout-body strong { color: var(--ink); }
+      .callout.blue  { background: var(--sky-light);   border-color: var(--sky-mid); }
+      .callout.teal  { background: var(--teal-light);  border-color: #99f6e4; }
+      .callout.amber { background: var(--amber-light); border-color: #fde68a; }
+      .callout.red   { background: var(--red-light);   border-color: #fecaca; }
+
+      /* ── Data category pills ── */
+      .pill-group { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 12px;
+        border-radius: 100px;
+        font-size: 12.5px;
+        font-weight: 500;
+        border: 1px solid transparent;
+      }
+      .pill.blue  { background: var(--sky-light);   color: var(--sky);   border-color: var(--sky-mid); }
+      .pill.teal  { background: var(--teal-light);  color: var(--teal);  border-color: #99f6e4; }
+      .pill.amber { background: var(--amber-light); color: var(--amber); border-color: #fde68a; }
+      .pill.red   { background: var(--red-light);   color: var(--red);   border-color: #fecaca; }
+      .pill.gray  { background: var(--surface-2);   color: var(--ink-muted); border-color: var(--border-strong); }
+
+      /* ── Feature grid ── */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 14px;
+        margin: 18px 0;
+      }
+      .feature-card {
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 18px;
+      }
+      .feature-card .fc-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+      .feature-card h4 { font-size: 13.5px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+      .feature-card p  { font-size: 12.5px; color: var(--ink-faint); margin: 0; }
+
+      /* ── Table ── */
+      .data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 16px 0; }
+      .data-table thead th {
+        background: var(--surface-2);
+        color: var(--ink);
+        font-weight: 600;
+        text-align: left;
+        padding: 11px 14px;
+        border-bottom: 2px solid var(--border-strong);
+      }
+      .data-table tbody td {
+        padding: 11px 14px;
+        border-bottom: 1px solid var(--border);
+        color: var(--ink-muted);
+        vertical-align: top;
+      }
+      .data-table tbody tr:last-child td { border-bottom: none; }
+      .data-table tbody tr:hover td { background: var(--surface-2); }
+      .data-table td strong { color: var(--ink); }
+
+      /* ── Rights grid ── */
+      .rights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+        margin: 18px 0;
+      }
+      .right-card {
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 18px;
+      }
+      .right-card .rc-icon { font-size: 20px; margin-bottom: 8px; }
+      .right-card h4 { font-size: 13px; font-weight: 700; color: var(--sky); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em; }
+      .right-card p  { font-size: 12.5px; color: var(--ink-faint); margin: 0; }
+
+      /* ── Contact box ── */
+      .contact-card {
+        background: linear-gradient(135deg, #f0fdf4 0%, #ebf2ff 100%);
+        border: 1px solid var(--sky-mid);
+        border-radius: var(--radius-lg);
+        padding: 32px 36px;
+        margin-top: 12px;
+      }
+      .contact-card h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-bottom: 8px;
+        color: var(--ink);
+      }
+      .contact-card p { color: var(--ink-muted); font-size: 14px; margin-bottom: 20px; }
+      .contact-items { display: flex; flex-direction: column; gap: 10px; }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+      .contact-item .ci-label { font-weight: 600; color: var(--ink); min-width: 80px; }
+      .contact-item a { color: var(--sky); text-decoration: none; }
+      .contact-item a:hover { text-decoration: underline; }
+
+      /* ── Footer ── */
+      .doc-footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 12.5px;
+        color: var(--ink-faint);
+        line-height: 2;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 600px) {
+        .card { padding: 24px 20px; }
+        .hero { padding: 32px 24px 28px; }
+        .toc-card { padding: 20px; }
+        .toc-grid { grid-template-columns: 1fr 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrap">
+
+      <!-- ── Hero ── -->
+      <div class="hero">
+        <div class="hero-badge">Privacy Policy</div>
+        <h1>Your Privacy,<br>Our Commitment</h1>
+        <p class="hero-sub">ProstoCalc: Clinical Cost Intelligence Platform for Modern Dentistry</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item"><span>📅</span> Last updated: April 15, 2026</div>
+          <div class="hero-meta-item"><span>📱</span> Applies to iOS, Android &amp; Web</div>
+          <div class="hero-meta-item"><span>🌍</span> GDPR &amp; HIPAA aligned</div>
+        </div>
+      </div>
+
+      <!-- ── Top callout ── -->
+      <div class="callout blue" style="margin-bottom:24px;">
+        <div class="callout-icon">ℹ️</div>
+        <div class="callout-body">
+          <strong>Important Notice:</strong> By downloading, installing, or using ProstoCalc on any platform (iOS, Android, or Web), you acknowledge that you have read, understood, and agree to this Privacy Policy. If you do not agree, please do not use the application. This policy is publicly accessible at our website and within the app.
+        </div>
+      </div>
+
+      <!-- ── Table of Contents ── -->
+      <div class="toc-card">
+        <h2>📋 Table of Contents</h2>
+        <div class="toc-grid">
+          <a class="toc-link" href="#s1"><span class="toc-num">1</span>About ProstoCalc</a>
+          <a class="toc-link" href="#s2"><span class="toc-num">2</span>Information We Collect</a>
+          <a class="toc-link" href="#s3"><span class="toc-num">3</span>How We Use Your Data</a>
+          <a class="toc-link" href="#s4"><span class="toc-num">4</span>Legal Basis (GDPR)</a>
+          <a class="toc-link" href="#s5"><span class="toc-num">5</span>Data Sharing</a>
+          <a class="toc-link" href="#s6"><span class="toc-num">6</span>AI / ML Architecture</a>
+          <a class="toc-link" href="#s7"><span class="toc-num">7</span>Data Security</a>
+          <a class="toc-link" href="#s8"><span class="toc-num">8</span>Data Retention</a>
+          <a class="toc-link" href="#s9"><span class="toc-num">9</span>Your Rights</a>
+          <a class="toc-link" href="#s10"><span class="toc-num">10</span>Children's Privacy</a>
+          <a class="toc-link" href="#s11"><span class="toc-num">11</span>Apple &amp; App Stores</a>
+          <a class="toc-link" href="#s12"><span class="toc-num">12</span>Third-Party Services</a>
+          <a class="toc-link" href="#s13"><span class="toc-num">13</span>Cookies &amp; Tracking</a>
+          <a class="toc-link" href="#s14"><span class="toc-num">14</span>International Transfers</a>
+          <a class="toc-link" href="#s15"><span class="toc-num">15</span>Do Not Sell</a>
+          <a class="toc-link" href="#s16"><span class="toc-num">16</span>Changes to Policy</a>
+          <a class="toc-link" href="#s17"><span class="toc-num">17</span>Contact Us</a>
+        </div>
+      </div>
+
+      <!-- ── S1: About ── -->
+      <div class="card" id="s1">
+        <div class="section-head">
+          <div class="section-icon">🦷</div>
+          <div class="section-meta">
+            <span class="section-num">Section 01</span>
+            <h2>About ProstoCalc</h2>
+          </div>
+        </div>
+        <p>ProstoCalc ("we," "our," "us," or "the App") is a <strong>Clinical Cost Intelligence Platform</strong> designed exclusively for licensed dental practitioners, dental clinic administrators, and their staff. The App provides highly accurate, AI-assisted treatment cost estimation, clinical documentation support, and dental practice management features.</p>
+        <p>ProstoCalc is operated by the ProstoCalc development team. All data processing described in this Policy is carried out by us or our vetted sub-processors as described herein.</p>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <span class="fc-icon">🤖</span>
+            <h4>Hybrid Cost Estimation</h4>
+            <p>Deterministic clinical formulas combined with ML-based predictions</p>
+          </div>
+          <div class="feature-card">
+            <span class="fc-icon">📋</span>
+            <h4>Neural Justification</h4>
+            <p>AI-generated clinical reports to transparently justify costs to patients</p>
+          </div>
+          <div class="feature-card">
+            <span class="fc-icon">📊</span>
+            <h4>Risk Analysis</h4>
+            <p>Predictive modeling for cost escalation and treatment complexity</p>
+          </div>
+          <div class="feature-card">
+            <span class="fc-icon">💯</span>
+            <h4>Dental Health Score</h4>
+            <p>Dynamic 0–100 index based on hygiene, age, and urgency factors</p>
+          </div>
+        </div>
+        <div class="callout amber">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body"><strong>Professional Use Only.</strong> ProstoCalc is intended solely for use by licensed dental professionals. Patient-facing use of output data (cost estimates, clinical reports) is the responsibility of the practitioner. Nothing in this App constitutes direct medical or financial advice to patients.</div>
+        </div>
+      </div>
+
+      <!-- ── S2: Information We Collect ── -->
+      <div class="card" id="s2">
+        <div class="section-head">
+          <div class="section-icon teal">📂</div>
+          <div class="section-meta">
+            <span class="section-num">Section 02</span>
+            <h2>Information We Collect</h2>
+          </div>
+        </div>
+        <p>We collect only the data necessary to provide the features of ProstoCalc. The categories below describe what we collect, why, and how.</p>
+
+        <h3>2.1 — Account &amp; Practitioner Data</h3>
+        <ul>
+          <li><strong>Identity:</strong> Full name, professional title, clinic name</li>
+          <li><strong>Contact:</strong> Email address, phone number, clinic address</li>
+          <li><strong>Credentials:</strong> Hashed password, role (admin / practitioner / staff), session tokens</li>
+          <li><strong>Professional:</strong> Dental licence number (where required for verification)</li>
+        </ul>
+        <div class="pill-group">
+          <span class="pill blue">🔒 Encrypted at rest</span>
+          <span class="pill teal">✅ Required to use the App</span>
+        </div>
+
+        <h3>2.2 — Patient Records</h3>
+        <div class="callout red">
+          <div class="callout-icon">🛡️</div>
+          <div class="callout-body"><strong>Health Data &amp; HIPAA Notice.</strong> Patient dental records are classified as Protected Health Information (PHI) / Special Category Data. They are processed solely at the direction of the practitioner (as a data processor) and are subject to the highest level of security and access controls available in the App.</div>
+        </div>
+        <ul>
+          <li><strong>Demographics:</strong> Patient name, date of birth, age, gender, contact details</li>
+          <li><strong>Medical/Dental History:</strong> Existing conditions, allergies, previous treatments, dental records</li>
+          <li><strong>Insurance Information:</strong> Insurer name, policy number, coverage details (practitioner-entered only)</li>
+          <li><strong>Appointment Records:</strong> Dates, procedures scheduled/completed, consultation notes</li>
+          <li><strong>Treatment Plans:</strong> Proposed procedures, complexity scores, estimated costs</li>
+        </ul>
+
+        <h3>2.3 — Clinical &amp; Procedural Data (Estimation Engine Inputs)</h3>
+        <ul>
+          <li>Procedure type and category (Restorative, Endodontic, Orthodontic, Surgical, Implant, Preventive, Cosmetic)</li>
+          <li>Number of units / teeth involved</li>
+          <li>Number of treatment sessions required</li>
+          <li>Bio-complexity scores (1–10 scale)</li>
+          <li>Material grade selected (standard / premium / luxury)</li>
+          <li>Patient hygiene score, urgency level</li>
+          <li>AI-generated clinical justification text</li>
+          <li>Escalation risk predictions and confidence intervals</li>
+          <li>Dental Health Score (0–100) and its component inputs</li>
+        </ul>
+
+        <h3>2.4 — Usage &amp; Technical Data</h3>
+        <ul>
+          <li><strong>Device information:</strong> Device model, OS version (iOS/Android/Web), screen resolution, unique device identifier (IDFV on iOS — never IDFA for advertising)</li>
+          <li><strong>App usage:</strong> Features accessed, screens visited, estimation sessions initiated, time in app, crash logs</li>
+          <li><strong>Network data:</strong> IP address, approximate location (city/country level only for security), access timestamps</li>
+          <li><strong>Analytics events:</strong> Feature engagement metrics collected in aggregate and/or pseudonymised form</li>
+        </ul>
+        <div class="callout teal">
+          <div class="callout-icon">✅</div>
+          <div class="callout-body"><strong>No Ad Tracking.</strong> We do <em>not</em> use Apple's Advertising Identifier (IDFA), Google Advertising ID (GAID), or any cross-app or cross-website tracking for advertising purposes. App Tracking Transparency (ATT) permission is therefore <strong>not requested</strong>.</div>
+        </div>
+
+        <h3>2.5 — Data You Do NOT Need to Provide</h3>
+        <p>We do not require and ask you not to enter Social Security numbers, national ID numbers, financial account numbers, or any data not directly relevant to dental practice management.</p>
+      </div>
+
+      <!-- ── S3: How We Use ── -->
+      <div class="card" id="s3">
+        <div class="section-head">
+          <div class="section-icon">⚙️</div>
+          <div class="section-meta">
+            <span class="section-num">Section 03</span>
+            <h2>How We Use Your Information</h2>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Purpose</th><th>Data Used</th><th>Legal Basis</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Provide core App features</strong> (estimation engine, records management)</td><td>All collected data</td><td>Contract performance</td></tr>
+            <tr><td><strong>AI / ML cost estimation</strong> (6-algorithm ensemble, Dental Health Score)</td><td>Clinical inputs, patient age, hygiene score</td><td>Contract performance</td></tr>
+            <tr><td><strong>Generate clinical justification reports</strong> (Llama-3 AI)</td><td>Procedure data, complexity score</td><td>Contract performance</td></tr>
+            <tr><td><strong>User authentication &amp; security</strong></td><td>Account credentials, IP, device ID</td><td>Legitimate interest</td></tr>
+            <tr><td><strong>Appointment scheduling</strong></td><td>Patient &amp; practitioner data</td><td>Contract performance</td></tr>
+            <tr><td><strong>Improve ML model accuracy</strong></td><td>Anonymised/aggregated estimation logs</td><td>Legitimate interest</td></tr>
+            <tr><td><strong>Customer support &amp; bug fixes</strong></td><td>Crash logs, device/OS info, support messages</td><td>Legitimate interest</td></tr>
+            <tr><td><strong>Legal compliance &amp; audit</strong></td><td>Access logs, account data</td><td>Legal obligation</td></tr>
+            <tr><td><strong>Transactional communications</strong> (account alerts, policy updates)</td><td>Email address</td><td>Legitimate interest / Consent</td></tr>
+          </tbody>
+        </table>
+        <div class="callout blue">
+          <div class="callout-icon">📌</div>
+          <div class="callout-body">We will <strong>never</strong> use patient clinical data for marketing, profiling unrelated to treatment, or sell it to any third party. ML model training uses only anonymised, aggregated data — never identifiable patient records.</div>
+        </div>
+      </div>
+
+      <!-- ── S4: Legal Basis ── -->
+      <div class="card" id="s4">
+        <div class="section-head">
+          <div class="section-icon amber">⚖️</div>
+          <div class="section-meta">
+            <span class="section-num">Section 04</span>
+            <h2>Legal Basis for Processing (GDPR)</h2>
+          </div>
+        </div>
+        <p>Where the General Data Protection Regulation (GDPR) or equivalent legislation applies, we process your personal data on the following legal grounds:</p>
+        <ul>
+          <li><strong>Contractual Necessity (Art. 6(1)(b)):</strong> Processing is necessary to provide the App's services as agreed when you create an account.</li>
+          <li><strong>Legitimate Interests (Art. 6(1)(f)):</strong> Security monitoring, fraud prevention, product analytics, and model improvement — subject to balancing tests.</li>
+          <li><strong>Legal Obligation (Art. 6(1)(c)):</strong> Compliance with applicable healthcare, data protection, and tax regulations.</li>
+          <li><strong>Consent (Art. 6(1)(a) / Art. 9(2)(a)):</strong> For optional features and for processing Special Category (health) data where no other basis applies. You may withdraw consent at any time without affecting prior processing.</li>
+          <li><strong>Health Data Derogation (Art. 9(2)(h)):</strong> Processing of health data for the provision of healthcare management services by health professionals, subject to appropriate confidentiality obligations.</li>
+        </ul>
+      </div>
+
+      <!-- ── S5: Data Sharing ── -->
+      <div class="card" id="s5">
+        <div class="section-head">
+          <div class="section-icon red">🤝</div>
+          <div class="section-meta">
+            <span class="section-num">Section 05</span>
+            <h2>Data Sharing &amp; Disclosure</h2>
+          </div>
+        </div>
+        <div class="callout red">
+          <div class="callout-icon">🚫</div>
+          <div class="callout-body"><strong>We do NOT sell personal information.</strong> ProstoCalc does not sell, rent, or trade identifiable personal data or patient health data to any third party for any commercial purpose.</div>
+        </div>
+        <p>We may share data only in the following limited circumstances:</p>
+        <ul>
+          <li><strong>Within Your Clinic:</strong> Data is shared among authorised staff within your clinic based on role-based access controls configured by the administrator.</li>
+          <li><strong>Service Providers (Sub-processors):</strong> We engage vetted third-party providers (e.g., cloud hosting, email delivery) under Data Processing Agreements (DPAs) that prohibit them from using your data for their own purposes. A list of sub-processors is available on request.</li>
+          <li><strong>Insurance &amp; Billing:</strong> Authorised insurance claims data may be shared with named insurers strictly for billing purposes and only with practitioner authorisation.</li>
+          <li><strong>Legal Requirements:</strong> We may disclose data to comply with a valid court order, subpoena, legal process, or governmental request, or to protect the rights, property, or safety of ProstoCalc, our users, or the public.</li>
+          <li><strong>Business Transfer:</strong> In the event of a merger, acquisition, or sale of assets, personal data may be transferred subject to the acquirer assuming equivalent privacy obligations. We will notify affected users.</li>
+          <li><strong>Aggregated Research Data:</strong> Fully anonymised and aggregated statistical data (no identifiable individuals) may be used in published research or product analytics.</li>
+          <li><strong>With Your Explicit Consent:</strong> In any other case, only with your prior written consent.</li>
+        </ul>
+      </div>
+
+      <!-- ── S6: AI/ML ── -->
+      <div class="card" id="s6">
+        <div class="section-head">
+          <div class="section-icon teal">🧠</div>
+          <div class="section-meta">
+            <span class="section-num">Section 06</span>
+            <h2>AI / ML Architecture &amp; Automated Processing</h2>
+          </div>
+        </div>
+        <p>ProstoCalc uses a <strong>6-algorithm ensemble engine</strong> for clinical cost intelligence. We are transparent about automated decision-making as required under GDPR Article 22 and equivalent laws.</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Algorithm</th><th>Purpose</th><th>Data Used</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Multivariate Regression</strong></td><td>Deterministic non-linear cost modeling</td><td>Complexity score, material grade</td></tr>
+            <tr><td><strong>GBDT (Gradient Boosted Decision Trees)</strong></td><td>Pattern recognition for age-complexity interactions</td><td>Patient age, procedure type</td></tr>
+            <tr><td><strong>Monte Carlo Simulation</strong></td><td>Uncertainty quantification (10,000 simulations per estimate)</td><td>Complication risk factors</td></tr>
+            <tr><td><strong>Bayesian Inference</strong></td><td>Evidence-based estimation updates</td><td>Age, hygiene score, urgency</td></tr>
+            <tr><td><strong>KNN (K-Nearest Neighbour)</strong></td><td>Historical treatment pattern matching</td><td>7-dimensional similarity matrix</td></tr>
+            <tr><td><strong>Meta-Learner</strong></td><td>Confidence-weighted aggregation of all outputs</td><td>All algorithm outputs</td></tr>
+          </tbody>
+        </table>
+        <p><strong>AI Justification Engine:</strong> We integrate Llama-3 and HuggingFace Transformers to generate "Neural Clinical Justifications" — converting numerical estimation data into professional-grade clinical report language. These outputs are always reviewed and approved by the practitioner before being shared with patients.</p>
+        <div class="callout blue">
+          <div class="callout-icon">ℹ️</div>
+          <div class="callout-body"><strong>Automated Decision-Making Safeguards.</strong> Cost estimates generated by ProstoCalc are <em>decision-support tools</em>, not final binding decisions. No automated output directly determines patient treatment without human practitioner review. You have the right to request a manual review of any estimate. Model training uses only anonymised, aggregated historical data — never identifiable patient records.</div>
+        </div>
+      </div>
+
+      <!-- ── S7: Security ── -->
+      <div class="card" id="s7">
+        <div class="section-head">
+          <div class="section-icon">🔐</div>
+          <div class="section-meta">
+            <span class="section-num">Section 07</span>
+            <h2>Data Security</h2>
+          </div>
+        </div>
+        <p>We implement industry-standard and healthcare-grade security controls to protect your data from unauthorised access, disclosure, alteration, and destruction.</p>
+
+        <h3>Technical Safeguards</h3>
+        <ul>
+          <li><strong>Encryption in transit:</strong> TLS 1.2 / 1.3 for all API communications</li>
+          <li><strong>Encryption at rest:</strong> AES-256 for database storage and backups</li>
+          <li><strong>Database security:</strong> Parameterised queries (SQL injection protection), least-privilege DB accounts</li>
+          <li><strong>Authentication:</strong> Token-based session management, secure password hashing (bcrypt), optional two-factor authentication (2FA)</li>
+          <li><strong>Input validation:</strong> Server-side validation and sanitisation of all user inputs</li>
+          <li><strong>iOS-specific:</strong> Data stored in iOS Keychain (credentials), encrypted Core Data store, App Transport Security (ATS) enforced</li>
+        </ul>
+
+        <h3>Organisational Safeguards</h3>
+        <ul>
+          <li>Role-based access control (RBAC) — staff only access data required for their role</li>
+          <li>Confidentiality agreements for all employees and contractors</li>
+          <li>Regular security audits and penetration testing</li>
+          <li>Incident response plan with defined breach notification procedures</li>
+          <li>Data minimisation principles applied throughout the product lifecycle</li>
+        </ul>
+
+        <div class="callout amber">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body"><strong>Breach Notification.</strong> In the event of a personal data breach that is likely to result in a high risk to individuals, we will notify affected users and the relevant supervisory authority within 72 hours of becoming aware, in accordance with GDPR Article 33/34 and applicable HIPAA Breach Notification Rule requirements.</div>
+        </div>
+        <p>No method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your data, we cannot guarantee absolute security. You are responsible for keeping your account credentials confidential.</p>
+      </div>
+
+      <!-- ── S8: Retention ── -->
+      <div class="card" id="s8">
+        <div class="section-head">
+          <div class="section-icon amber">🗃️</div>
+          <div class="section-meta">
+            <span class="section-num">Section 08</span>
+            <h2>Data Retention</h2>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Data Category</th><th>Retention Period</th><th>Reason</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Account data</strong></td><td>Duration of account + 30 days after deletion request</td><td>Service provision; legal obligation</td></tr>
+            <tr><td><strong>Patient dental records</strong></td><td>As required by local healthcare regulations (commonly 7–10 years)</td><td>Healthcare regulatory compliance</td></tr>
+            <tr><td><strong>Treatment estimate logs</strong></td><td>3 years (anonymised after 12 months)</td><td>ML model improvement; audit trail</td></tr>
+            <tr><td><strong>Security / access logs</strong></td><td>12 months</td><td>Security monitoring; incident response</td></tr>
+            <tr><td><strong>Crash &amp; analytics data</strong></td><td>90 days</td><td>Product improvement</td></tr>
+            <tr><td><strong>Backups</strong></td><td>Up to 90 days (rolling)</td><td>Disaster recovery</td></tr>
+          </tbody>
+        </table>
+        <p>When data is no longer required, it is securely deleted or irreversibly anonymised. You may request early deletion subject to applicable legal hold obligations.</p>
+      </div>
+
+      <!-- ── S9: Your Rights ── -->
+      <div class="card" id="s9">
+        <div class="section-head">
+          <div class="section-icon teal">👤</div>
+          <div class="section-meta">
+            <span class="section-num">Section 09</span>
+            <h2>Your Privacy Rights</h2>
+          </div>
+        </div>
+        <p>Depending on your jurisdiction, you may have the following rights. To exercise any right, contact us at <a href="mailto:prostocalc.otp@gmail.com">prostocalc.otp@gmail.com</a>. We will respond within 30 days (GDPR: within 1 month, extendable by 2 months for complex requests).</p>
+        <div class="rights-grid">
+          <div class="right-card">
+            <div class="rc-icon">👁️</div>
+            <h4>Access</h4>
+            <p>Request a copy of all personal data we hold about you (data subject access request).</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">✏️</div>
+            <h4>Rectification</h4>
+            <p>Request correction of inaccurate or incomplete personal data.</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">🗑️</div>
+            <h4>Erasure</h4>
+            <p>Request deletion of your data ("right to be forgotten"), subject to legal hold obligations.</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">⏸️</div>
+            <h4>Restriction</h4>
+            <p>Request we restrict processing of your data while a complaint is being resolved.</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">📤</div>
+            <h4>Portability</h4>
+            <p>Receive your personal data in a structured, machine-readable format (JSON/CSV).</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">🙅</div>
+            <h4>Objection</h4>
+            <p>Object to processing based on legitimate interests, including profiling.</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">🤖</div>
+            <h4>Automated Decisions</h4>
+            <p>Request human review of any significant decision made by automated processing.</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">↩️</div>
+            <h4>Withdraw Consent</h4>
+            <p>Withdraw previously given consent at any time without penalty, for future processing only.</p>
+          </div>
+        </div>
+        <div class="callout blue" style="margin-top:20px;">
+          <div class="callout-icon">🏛️</div>
+          <div class="callout-body"><strong>Right to Lodge a Complaint.</strong> If you are in the EU/EEA, you have the right to lodge a complaint with your local Data Protection Authority (DPA). In India, complaints may be directed to the Data Protection Board under the Digital Personal Data Protection Act, 2023 (DPDPA).</div>
+        </div>
+      </div>
+
+      <!-- ── S10: Children ── -->
+      <div class="card" id="s10">
+        <div class="section-head">
+          <div class="section-icon red">👶</div>
+          <div class="section-meta">
+            <span class="section-num">Section 10</span>
+            <h2>Children's Privacy</h2>
+          </div>
+        </div>
+        <p><strong>ProstoCalc is not directed at, and is not intended for use by, individuals under the age of 18.</strong> The App is a professional dental practice management tool restricted to licensed practitioners and their authorised adult staff.</p>
+        <p>In the context of patient records, minors may be registered as <em>patients</em> by their practitioner. Such records are handled with the same or greater level of protection as adult records and in compliance with applicable children's data protection laws. Parental/guardian consent applies where required by law.</p>
+        <p>We do not knowingly create accounts for or collect personal information directly from children under 13 (or the applicable age of digital consent in your jurisdiction). If we become aware that such data has been collected without appropriate consent, we will delete it promptly.</p>
+        <div class="callout amber">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body">If you believe a child has provided personal information to us without appropriate consent, please contact us immediately at <a href="mailto:prostocalc.otp@gmail.com">prostocalc.otp@gmail.com</a>.</div>
+        </div>
+      </div>
+
+      <!-- ── S11: Apple / App Stores ── -->
+      <div class="card" id="s11">
+        <div class="section-head">
+          <div class="section-icon">📱</div>
+          <div class="section-meta">
+            <span class="section-num">Section 11</span>
+            <h2>Apple App Store, Google Play &amp; Platform-Specific Disclosures</h2>
+          </div>
+        </div>
+
+        <h3>Apple App Store — Privacy Nutrition Label Disclosures</h3>
+        <p>In accordance with Apple's App Privacy requirements, the following data types are used by ProstoCalc:</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Data Type</th><th>Collected</th><th>Used For</th><th>Linked to Identity</th><th>Tracking</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Name</td><td>Yes</td><td>App functionality</td><td>Yes</td><td>No</td></tr>
+            <tr><td>Email Address</td><td>Yes</td><td>App functionality, account management</td><td>Yes</td><td>No</td></tr>
+            <tr><td>Phone Number</td><td>Yes (optional)</td><td>App functionality</td><td>Yes</td><td>No</td></tr>
+            <tr><td>Health &amp; Fitness (Dental Records)</td><td>Yes</td><td>App functionality (core feature)</td><td>Yes</td><td>No</td></tr>
+            <tr><td>User Content (Clinical Notes)</td><td>Yes</td><td>App functionality</td><td>Yes</td><td>No</td></tr>
+            <tr><td>Device ID (IDFV)</td><td>Yes</td><td>Analytics, security</td><td>No</td><td>No</td></tr>
+            <tr><td>Crash Data</td><td>Yes</td><td>App functionality (bug fixes)</td><td>No</td><td>No</td></tr>
+            <tr><td>Product Interaction</td><td>Yes</td><td>Analytics (aggregated)</td><td>No</td><td>No</td></tr>
+          </tbody>
+        </table>
+        <div class="callout teal">
+          <div class="callout-icon">✅</div>
+          <div class="callout-body"><strong>No Third-Party Advertising.</strong> ProstoCalc does not use data to track users across apps or websites for advertising, does not share data with data brokers, and does not display third-party advertisements. The App Tracking Transparency (ATT) framework permission is not requested because we do not engage in cross-app tracking.</div>
+        </div>
+
+        <h3>iOS Permissions Requested</h3>
+        <ul>
+          <li><strong>Camera (Optional):</strong> To capture patient photographs for records — only accessed when you explicitly tap the camera button. <em>Never accessed in background.</em></li>
+          <li><strong>Photo Library (Optional):</strong> To attach existing images to patient records — only accessed upon explicit user action.</li>
+          <li><strong>Notifications (Optional):</strong> For appointment reminders and clinical alerts — only sent with your explicit permission.</li>
+          <li><strong>Face ID / Touch ID (Optional):</strong> For secure biometric app unlock — biometric data never leaves your device and is processed entirely by iOS.</li>
+        </ul>
+        <p>All permissions are optional unless noted and can be revoked at any time in <strong>iOS Settings → ProstoCalc</strong>. Revoking optional permissions does not affect core app functionality.</p>
+
+        <h3>Google Play — Data Safety</h3>
+        <p>The Google Play Data Safety form is kept current and reflects the data practices described in this policy. We do not share personal or sensitive data with third parties for advertising. Location data is not collected.</p>
+      </div>
+
+      <!-- ── S12: Third Parties ── -->
+      <div class="card" id="s12">
+        <div class="section-head">
+          <div class="section-icon amber">🔗</div>
+          <div class="section-meta">
+            <span class="section-num">Section 12</span>
+            <h2>Third-Party Services &amp; Sub-Processors</h2>
+          </div>
+        </div>
+        <p>ProstoCalc may integrate with the following categories of third-party services to deliver its features. Each sub-processor is contractually bound to process data only on our instructions and under appropriate security standards.</p>
+        <ul>
+          <li><strong>Cloud Infrastructure:</strong> Server hosting and database storage (data stored within your selected region where possible)</li>
+          <li><strong>AI / ML Inference:</strong> HuggingFace Transformers API (used for Neural Clinical Justification generation; inputs are pseudonymised before transmission)</li>
+          <li><strong>Transactional Email:</strong> Account verification and notification emails</li>
+          <li><strong>Crash Reporting:</strong> App stability monitoring (crash data only; no personal data)</li>
+          <li><strong>Analytics:</strong> Aggregated, anonymised usage analytics for product improvement</li>
+        </ul>
+        <div class="callout blue">
+          <div class="callout-icon">📩</div>
+          <div class="callout-body">A full, up-to-date list of sub-processors is available upon written request to <a href="mailto:prostocalc.otp@gmail.com">prostocalc.otp@gmail.com</a>. We will notify you of material changes to our sub-processor list with at least 14 days' notice.</div>
+        </div>
+        <p>Our App may contain links to third-party websites (e.g., help documentation, insurance portals). We are not responsible for the privacy practices of such third parties. We encourage you to review their respective privacy policies.</p>
+      </div>
+
+      <!-- ── S13: Cookies ── -->
+      <div class="card" id="s13">
+        <div class="section-head">
+          <div class="section-icon">🍪</div>
+          <div class="section-meta">
+            <span class="section-num">Section 13</span>
+            <h2>Cookies &amp; Tracking Technologies</h2>
+          </div>
+        </div>
+        <p>The <strong>web version</strong> of ProstoCalc uses the following cookies and similar technologies:</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Category</th><th>Purpose</th><th>Can be disabled?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Strictly Necessary</strong></td><td>Session authentication, CSRF protection, load balancing. Without these, the App cannot function.</td><td>No</td></tr>
+            <tr><td><strong>Functional</strong></td><td>Remembering your language, UI preferences, and recently accessed records for ease of use.</td><td>Yes (with reduced functionality)</td></tr>
+            <tr><td><strong>Analytics</strong></td><td>Aggregated, anonymised usage statistics to improve the product.</td><td>Yes</td></tr>
+          </tbody>
+        </table>
+        <p>We do <strong>not</strong> use advertising cookies, cross-site tracking cookies, or social media tracking pixels. You can manage cookie preferences in the App's Settings or via your browser settings. Disabling strictly necessary cookies will prevent you from logging in.</p>
+        <p>The <strong>iOS and Android native apps</strong> do not use browser cookies. They use secure, app-local session tokens stored in the device Keychain (iOS) or EncryptedSharedPreferences (Android).</p>
+      </div>
+
+      <!-- ── S14: International Transfers ── -->
+      <div class="card" id="s14">
+        <div class="section-head">
+          <div class="section-icon">🌍</div>
+          <div class="section-meta">
+            <span class="section-num">Section 14</span>
+            <h2>International Data Transfers</h2>
+          </div>
+        </div>
+        <p>ProstoCalc may store and process your data on servers located outside your country of residence. Where data is transferred from the European Economic Area (EEA), United Kingdom, or other jurisdictions with data transfer restrictions, we ensure appropriate safeguards are in place, including:</p>
+        <ul>
+          <li><strong>Standard Contractual Clauses (SCCs):</strong> EU-approved contract terms with all non-EEA sub-processors</li>
+          <li><strong>Adequacy Decisions:</strong> Where the European Commission has recognised the destination country as providing adequate protection</li>
+          <li><strong>Binding Corporate Rules:</strong> Where applicable for intra-group transfers</li>
+        </ul>
+        <p>For users in India: data may be processed in data centres located in India or in other countries. We apply the same security standards regardless of location and comply with applicable provisions of the Digital Personal Data Protection Act, 2023 (DPDPA).</p>
+      </div>
+
+      <!-- ── S15: Do Not Sell ── -->
+      <div class="card" id="s15">
+        <div class="section-head">
+          <div class="section-icon teal">🚫</div>
+          <div class="section-meta">
+            <span class="section-num">Section 15</span>
+            <h2>Do Not Sell or Share My Personal Information</h2>
+          </div>
+        </div>
+        <div class="callout teal">
+          <div class="callout-icon">✅</div>
+          <div class="callout-body"><strong>ProstoCalc does not sell or share personal information for cross-context behavioural advertising.</strong> This policy applies to all users, including California residents under the CCPA/CPRA. No action is required by you to opt out — this is our default practice.</div>
+        </div>
+        <h3>California Residents (CCPA / CPRA)</h3>
+        <p>In addition to the rights in Section 9, California residents have the right to:</p>
+        <ul>
+          <li>Know the categories and specific pieces of personal information collected about them</li>
+          <li>Know whether personal information is sold or disclosed and to whom</li>
+          <li>Opt out of the sale or sharing of personal information (not applicable — we do not sell or share)</li>
+          <li>Non-discrimination for exercising CCPA rights</li>
+          <li>Limit use and disclosure of sensitive personal information</li>
+        </ul>
+        <p>To exercise California rights, contact us at <a href="mailto:prostocalc.otp@gmail.com">prostocalc.otp@gmail.com</a> with the subject line "CCPA Request".</p>
+      </div>
+
+      <!-- ── S16: Changes ── -->
+      <div class="card" id="s16">
+        <div class="section-head">
+          <div class="section-icon">🔄</div>
+          <div class="section-meta">
+            <span class="section-num">Section 16</span>
+            <h2>Changes to This Policy</h2>
+          </div>
+        </div>
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or for other operational reasons. We will update the "Last Updated" date at the top of this page.</p>
+        <p><strong>For material changes</strong> (e.g., new data categories collected, new sharing arrangements, changes to your rights), we will:</p>
+        <ul>
+          <li>Send an email notification to the address on your account, and/or</li>
+          <li>Display a prominent in-app banner at next login requiring acknowledgment</li>
+          <li>Provide at least 30 days' notice before the changes take effect</li>
+        </ul>
+        <p>Your continued use of ProstoCalc after the effective date of a revised policy constitutes your acceptance of the changes. The current version of this policy is always accessible in the App under <strong>Settings → Privacy Policy</strong> and at our website.</p>
+      </div>
+
+      <!-- ── S17: Contact ── -->
+      <div id="s17">
+        <div class="contact-card">
+          <h2>📬 Contact Us &amp; Data Protection</h2>
+          <p>For any questions, concerns, or requests related to this Privacy Policy or our data practices — including data subject access requests — please contact us using the details below. We aim to respond within 30 days.</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <span>📧</span>
+              <span class="ci-label">Email</span>
+              <a href="mailto:prostocalc.otp@gmail.com">prostocalc.otp@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <span>🌐</span>
+              <span class="ci-label">Website</span>
+              <a href="http://14.139.187.229:8099/" target="_blank" rel="noopener">http://14.139.187.229:8099/</a>
+            </div>
+            <div class="contact-item">
+              <span>📍</span>
+              <span class="ci-label">Address</span>
+              <span style="color: var(--ink-muted);">[Clinic Address — Update Before Submission]</span>
+            </div>
+            <div class="contact-item">
+              <span>⏱️</span>
+              <span class="ci-label">Response</span>
+              <span style="color: var(--ink-muted);">Within 30 days of receipt of request</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Footer ── -->
+      <div class="doc-footer">
+        <p>ProstoCalc — Clinical Cost Intelligence Platform for Modern Dentistry</p>
+        <p>Privacy Policy · Last Updated: April 15, 2026 · Version 2.0</p>
+        <p style="margin-top:8px; font-size:11.5px;">This policy applies to the ProstoCalc iOS App, Android App, and Web Application.<br>Designed to meet Apple App Store, Google Play, GDPR, HIPAA, CCPA, and DPDPA requirements.</p>
+      </div>
+
+    </div>
+  </body>
+</html><!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProstoCalc – Privacy Policy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --ink: #0f1523;
+        --ink-muted: #4a5568;
+        --ink-faint: #718096;
+        --sky: #1a56db;
+        --sky-light: #ebf2ff;
+        --sky-mid: #bfdbfe;
+        --teal: #0d9488;
+        --teal-light: #f0fdfa;
+        --amber: #d97706;
+        --amber-light: #fffbeb;
+        --red: #dc2626;
+        --red-light: #fef2f2;
+        --surface: #ffffff;
+        --surface-2: #f8fafc;
+        --border: #e2e8f0;
+        --border-strong: #cbd5e1;
+        --radius: 10px;
+        --radius-lg: 16px;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: 'DM Sans', -apple-system, sans-serif;
+        font-size: 15px;
+        line-height: 1.75;
+        color: var(--ink);
+        background: #f1f5f9;
+        padding: 32px 16px 80px;
+      }
+
+      /* ── Layout ── */
+      .page-wrap {
+        max-width: 860px;
+        margin: 0 auto;
+      }
+
+      /* ── Hero banner ── */
+      .hero {
+        background: linear-gradient(135deg, #1a3a6b 0%, #1a56db 60%, #0d9488 100%);
+        border-radius: var(--radius-lg);
+        padding: 48px 40px 40px;
+        color: #fff;
+        margin-bottom: 32px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 100px;
+        padding: 4px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        position: relative;
+      }
+      .hero-badge::before { content: '🔒'; }
+      .hero h1 {
+        font-family: 'DM Serif Display', Georgia, serif;
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        font-weight: 400;
+        line-height: 1.15;
+        margin-bottom: 14px;
+        position: relative;
+      }
+      .hero-sub {
+        font-size: 15px;
+        opacity: 0.85;
+        max-width: 540px;
+        position: relative;
+      }
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 28px;
+        position: relative;
+      }
+      .hero-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12.5px;
+        opacity: 0.8;
+      }
+      .hero-meta-item span { font-size: 15px; }
+
+      /* ── TOC ── */
+      .toc-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 28px 32px;
+        margin-bottom: 32px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      }
+      .toc-card h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: var(--ink);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .toc-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 6px;
+      }
+      .toc-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--sky);
+        font-size: 13.5px;
+        font-weight: 500;
+        transition: background 0.15s;
+      }
+      .toc-link:hover { background: var(--sky-light); }
+      .toc-num {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        background: var(--sky-light);
+        color: var(--sky);
+        font-size: 11px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      /* ── Cards ── */
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 32px 36px;
+        margin-bottom: 24px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      }
+
+      /* ── Section headings ── */
+      .section-head {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .section-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--sky-light);
+        color: var(--sky);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .section-icon.teal  { background: var(--teal-light); color: var(--teal); }
+      .section-icon.amber { background: var(--amber-light); color: var(--amber); }
+      .section-icon.red   { background: var(--red-light); color: var(--red); }
+      .section-meta { flex: 1; }
+      .section-meta .section-num {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--sky);
+        display: block;
+        margin-bottom: 3px;
+      }
+      .section-meta h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.35rem;
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.3;
+      }
+
+      /* ── Typography ── */
+      p { color: var(--ink-muted); margin-bottom: 14px; }
+      p:last-child { margin-bottom: 0; }
+
+      h3 {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--ink);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin: 24px 0 10px;
+      }
+      h3:first-child { margin-top: 0; }
+
+      ul, ol {
+        margin-left: 20px;
+        margin-bottom: 14px;
+      }
+      li {
+        color: var(--ink-muted);
+        margin-bottom: 8px;
+      }
+      li strong { color: var(--ink); }
+
+      /* ── Callout boxes ── */
+      .callout {
+        display: flex;
+        gap: 14px;
+        padding: 16px 18px;
+        border-radius: 10px;
+        margin: 20px 0;
+        border: 1px solid transparent;
+      }
+      .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+      .callout-body { flex: 1; font-size: 14px; line-height: 1.65; color: var(--ink-muted); }
+      .callout-body strong { color: var(--ink); }
+      .callout.blue  { background: var(--sky-light);   border-color: var(--sky-mid); }
+      .callout.teal  { background: var(--teal-light);  border-color: #99f6e4; }
+      .callout.amber { background: var(--amber-light); border-color: #fde68a; }
+      .callout.red   { background: var(--red-light);   border-color: #fecaca; }
+
+      /* ── Data category pills ── */
+      .pill-group { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 12px;
+        border-radius: 100px;
+        font-size: 12.5px;
+        font-weight: 500;
+        border: 1px solid transparent;
+      }
+      .pill.blue  { background: var(--sky-light);   color: var(--sky);   border-color: var(--sky-mid); }
+      .pill.teal  { background: var(--teal-light);  color: var(--teal);  border-color: #99f6e4; }
+      .pill.amber { background: var(--amber-light); color: var(--amber); border-color: #fde68a; }
+      .pill.red   { background: var(--red-light);   color: var(--red);   border-color: #fecaca; }
+      .pill.gray  { background: var(--surface-2);   color: var(--ink-muted); border-color: var(--border-strong); }
+
+      /* ── Feature grid ── */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 14px;
+        margin: 18px 0;
+      }
+      .feature-card {
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 18px;
+      }
+      .feature-card .fc-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+      .feature-card h4 { font-size: 13.5px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+      .feature-card p  { font-size: 12.5px; color: var(--ink-faint); margin: 0; }
+
+      /* ── Table ── */
+      .data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 16px 0; }
+      .data-table thead th {
+        background: var(--surface-2);
+        color: var(--ink);
+        font-weight: 600;
+        text-align: left;
+        padding: 11px 14px;
+        border-bottom: 2px solid var(--border-strong);
+      }
+      .data-table tbody td {
+        padding: 11px 14px;
+        border-bottom: 1px solid var(--border);
+        color: var(--ink-muted);
+        vertical-align: top;
+      }
+      .data-table tbody tr:last-child td { border-bottom: none; }
+      .data-table tbody tr:hover td { background: var(--surface-2); }
+      .data-table td strong { color: var(--ink); }
+
+      /* ── Rights grid ── */
+      .rights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+        margin: 18px 0;
+      }
+      .right-card {
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 18px;
+      }
+      .right-card .rc-icon { font-size: 20px; margin-bottom: 8px; }
+      .right-card h4 { font-size: 13px; font-weight: 700; color: var(--sky); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.05em; }
+      .right-card p  { font-size: 12.5px; color: var(--ink-faint); margin: 0; }
+
+      /* ── Contact box ── */
+      .contact-card {
+        background: linear-gradient(135deg, #f0fdf4 0%, #ebf2ff 100%);
+        border: 1px solid var(--sky-mid);
+        border-radius: var(--radius-lg);
+        padding: 32px 36px;
+        margin-top: 12px;
+      }
+      .contact-card h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-bottom: 8px;
+        color: var(--ink);
+      }
+      .contact-card p { color: var(--ink-muted); font-size: 14px; margin-bottom: 20px; }
+      .contact-items { display: flex; flex-direction: column; gap: 10px; }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+      .contact-item .ci-label { font-weight: 600; color: var(--ink); min-width: 80px; }
+      .contact-item a { color: var(--sky); text-decoration: none; }
+      .contact-item a:hover { text-decoration: underline; }
+
+      /* ── Footer ── */
+      .doc-footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 12.5px;
+        color: var(--ink-faint);
+        line-height: 2;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 600px) {
+        .card { padding: 24px 20px; }
+        .hero { padding: 32px 24px 28px; }
+        .toc-card { padding: 20px; }
+        .toc-grid { grid-template-columns: 1fr 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrap">
+
+      <!-- ── Hero ── -->
+      <div class="hero">
+        <div class="hero-badge">Privacy Policy</div>
+        <h1>Your Privacy,<br>Our Commitment</h1>
+        <p class="hero-sub">ProstoCalc: Clinical Cost Intelligence Platform for Modern Dentistry</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item"><span>📅</span> Last updated: April 15, 2026</div>
+          <div class="hero-meta-item"><span>📱</span> Applies to iOS, Android &amp; Web</div>
+          <div class="hero-meta-item"><span>🌍</span> GDPR &amp; HIPAA aligned</div>
+        </div>
+      </div>
+
+      <!-- ── Top callout ── -->
+      <div class="callout blue" style="margin-bottom:24px;">
+        <div class="callout-icon">ℹ️</div>
+        <div class="callout-body">
+          <strong>Important Notice:</strong> By downloading, installing, or using ProstoCalc on any platform (iOS, Android, or Web), you acknowledge that you have read, understood, and agree to this Privacy Policy. If you do not agree, please do not use the application. This policy is publicly accessible at our website and within the app.
+        </div>
+      </div>
+
+      <!-- ── Table of Contents ── -->
+      <div class="toc-card">
+        <h2>📋 Table of Contents</h2>
+        <div class="toc-grid">
+          <a class="toc-link" href="#s1"><span class="toc-num">1</span>About ProstoCalc</a>
+          <a class="toc-link" href="#s2"><span class="toc-num">2</span>Information We Collect</a>
+          <a class="toc-link" href="#s3"><span class="toc-num">3</span>How We Use Your Data</a>
+          <a class="toc-link" href="#s4"><span class="toc-num">4</span>Legal Basis (GDPR)</a>
+          <a class="toc-link" href="#s5"><span class="toc-num">5</span>Data Sharing</a>
+          <a class="toc-link" href="#s6"><span class="toc-num">6</span>AI / ML Architecture</a>
+          <a class="toc-link" href="#s7"><span class="toc-num">7</span>Data Security</a>
+          <a class="toc-link" href="#s8"><span class="toc-num">8</span>Data Retention</a>
+          <a class="toc-link" href="#s9"><span class="toc-num">9</span>Your Rights</a>
+          <a class="toc-link" href="#s10"><span class="toc-num">10</span>Children's Privacy</a>
+          <a class="toc-link" href="#s11"><span class="toc-num">11</span>Apple &amp; App Stores</a>
+          <a class="toc-link" href="#s12"><span class="toc-num">12</span>Third-Party Services</a>
+          <a class="toc-link" href="#s13"><span class="toc-num">13</span>Cookies &amp; Tracking</a>
+          <a class="toc-link" href="#s14"><span class="toc-num">14</span>International Transfers</a>
+          <a class="toc-link" href="#s15"><span class="toc-num">15</span>Do Not Sell</a>
+          <a class="toc-link" href="#s16"><span class="toc-num">16</span>Changes to Policy</a>
+          <a class="toc-link" href="#s17"><span class="toc-num">17</span>Contact Us</a>
+        </div>
+      </div>
+
+      <!-- ── S1: About ── -->
+      <div class="card" id="s1">
+        <div class="section-head">
+          <div class="section-icon">🦷</div>
+          <div class="section-meta">
+            <span class="section-num">Section 01</span>
+            <h2>About ProstoCalc</h2>
+          </div>
+        </div>
+        <p>ProstoCalc ("we," "our," "us," or "the App") is a <strong>Clinical Cost Intelligence Platform</strong> designed exclusively for licensed dental practitioners, dental clinic administrators, and their staff. The App provides highly accurate, AI-assisted treatment cost estimation, clinical documentation support, and dental practice management features.</p>
+        <p>ProstoCalc is operated by the ProstoCalc development team. All data processing described in this Policy is carried out by us or our vetted sub-processors as described herein.</p>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <span class="fc-icon">🤖</span>
+            <h4>Hybrid Cost Estimation</h4>
+            <p>Deterministic clinical formulas combined with ML-based predictions</p>
+          </div>
+          <div class="feature-card">
+            <span class="fc-icon">📋</span>
+            <h4>Neural Justification</h4>
+            <p>AI-generated clinical reports to transparently justify costs to patients</p>
+          </div>
+          <div class="feature-card">
+            <span class="fc-icon">📊</span>
+            <h4>Risk Analysis</h4>
+            <p>Predictive modeling for cost escalation and treatment complexity</p>
+          </div>
+          <div class="feature-card">
+            <span class="fc-icon">💯</span>
+            <h4>Dental Health Score</h4>
+            <p>Dynamic 0–100 index based on hygiene, age, and urgency factors</p>
+          </div>
+        </div>
+        <div class="callout amber">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body"><strong>Professional Use Only.</strong> ProstoCalc is intended solely for use by licensed dental professionals. Patient-facing use of output data (cost estimates, clinical reports) is the responsibility of the practitioner. Nothing in this App constitutes direct medical or financial advice to patients.</div>
+        </div>
+      </div>
+
+      <!-- ── S2: Information We Collect ── -->
+      <div class="card" id="s2">
+        <div class="section-head">
+          <div class="section-icon teal">📂</div>
+          <div class="section-meta">
+            <span class="section-num">Section 02</span>
+            <h2>Information We Collect</h2>
+          </div>
+        </div>
+        <p>We collect only the data necessary to provide the features of ProstoCalc. The categories below describe what we collect, why, and how.</p>
+
+        <h3>2.1 — Account &amp; Practitioner Data</h3>
+        <ul>
+          <li><strong>Identity:</strong> Full name, professional title, clinic name</li>
+          <li><strong>Contact:</strong> Email address, phone number, clinic address</li>
+          <li><strong>Credentials:</strong> Hashed password, role (admin / practitioner / staff), session tokens</li>
+          <li><strong>Professional:</strong> Dental licence number (where required for verification)</li>
+        </ul>
+        <div class="pill-group">
+          <span class="pill blue">🔒 Encrypted at rest</span>
+          <span class="pill teal">✅ Required to use the App</span>
+        </div>
+
+        <h3>2.2 — Patient Records</h3>
+        <div class="callout red">
+          <div class="callout-icon">🛡️</div>
+          <div class="callout-body"><strong>Health Data &amp; HIPAA Notice.</strong> Patient dental records are classified as Protected Health Information (PHI) / Special Category Data. They are processed solely at the direction of the practitioner (as a data processor) and are subject to the highest level of security and access controls available in the App.</div>
+        </div>
+        <ul>
+          <li><strong>Demographics:</strong> Patient name, date of birth, age, gender, contact details</li>
+          <li><strong>Medical/Dental History:</strong> Existing conditions, allergies, previous treatments, dental records</li>
+          <li><strong>Insurance Information:</strong> Insurer name, policy number, coverage details (practitioner-entered only)</li>
+          <li><strong>Appointment Records:</strong> Dates, procedures scheduled/completed, consultation notes</li>
+          <li><strong>Treatment Plans:</strong> Proposed procedures, complexity scores, estimated costs</li>
+        </ul>
+
+        <h3>2.3 — Clinical &amp; Procedural Data (Estimation Engine Inputs)</h3>
+        <ul>
+          <li>Procedure type and category (Restorative, Endodontic, Orthodontic, Surgical, Implant, Preventive, Cosmetic)</li>
+          <li>Number of units / teeth involved</li>
+          <li>Number of treatment sessions required</li>
+          <li>Bio-complexity scores (1–10 scale)</li>
+          <li>Material grade selected (standard / premium / luxury)</li>
+          <li>Patient hygiene score, urgency level</li>
+          <li>AI-generated clinical justification text</li>
+          <li>Escalation risk predictions and confidence intervals</li>
+          <li>Dental Health Score (0–100) and its component inputs</li>
+        </ul>
+
+        <h3>2.4 — Usage &amp; Technical Data</h3>
+        <ul>
+          <li><strong>Device information:</strong> Device model, OS version (iOS/Android/Web), screen resolution, unique device identifier (IDFV on iOS — never IDFA for advertising)</li>
+          <li><strong>App usage:</strong> Features accessed, screens visited, estimation sessions initiated, time in app, crash logs</li>
+          <li><strong>Network data:</strong> IP address, approximate location (city/country level only for security), access timestamps</li>
+          <li><strong>Analytics events:</strong> Feature engagement metrics collected in aggregate and/or pseudonymised form</li>
+        </ul>
+        <div class="callout teal">
+          <div class="callout-icon">✅</div>
+          <div class="callout-body"><strong>No Ad Tracking.</strong> We do <em>not</em> use Apple's Advertising Identifier (IDFA), Google Advertising ID (GAID), or any cross-app or cross-website tracking for advertising purposes. App Tracking Transparency (ATT) permission is therefore <strong>not requested</strong>.</div>
+        </div>
+
+        <h3>2.5 — Data You Do NOT Need to Provide</h3>
+        <p>We do not require and ask you not to enter Social Security numbers, national ID numbers, financial account numbers, or any data not directly relevant to dental practice management.</p>
+      </div>
+
+      <!-- ── S3: How We Use ── -->
+      <div class="card" id="s3">
+        <div class="section-head">
+          <div class="section-icon">⚙️</div>
+          <div class="section-meta">
+            <span class="section-num">Section 03</span>
+            <h2>How We Use Your Information</h2>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Purpose</th><th>Data Used</th><th>Legal Basis</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Provide core App features</strong> (estimation engine, records management)</td><td>All collected data</td><td>Contract performance</td></tr>
+            <tr><td><strong>AI / ML cost estimation</strong> (6-algorithm ensemble, Dental Health Score)</td><td>Clinical inputs, patient age, hygiene score</td><td>Contract performance</td></tr>
+            <tr><td><strong>Generate clinical justification reports</strong> (Llama-3 AI)</td><td>Procedure data, complexity score</td><td>Contract performance</td></tr>
+            <tr><td><strong>User authentication &amp; security</strong></td><td>Account credentials, IP, device ID</td><td>Legitimate interest</td></tr>
+            <tr><td><strong>Appointment scheduling</strong></td><td>Patient &amp; practitioner data</td><td>Contract performance</td></tr>
+            <tr><td><strong>Improve ML model accuracy</strong></td><td>Anonymised/aggregated estimation logs</td><td>Legitimate interest</td></tr>
+            <tr><td><strong>Customer support &amp; bug fixes</strong></td><td>Crash logs, device/OS info, support messages</td><td>Legitimate interest</td></tr>
+            <tr><td><strong>Legal compliance &amp; audit</strong></td><td>Access logs, account data</td><td>Legal obligation</td></tr>
+            <tr><td><strong>Transactional communications</strong> (account alerts, policy updates)</td><td>Email address</td><td>Legitimate interest / Consent</td></tr>
+          </tbody>
+        </table>
+        <div class="callout blue">
+          <div class="callout-icon">📌</div>
+          <div class="callout-body">We will <strong>never</strong> use patient clinical data for marketing, profiling unrelated to treatment, or sell it to any third party. ML model training uses only anonymised, aggregated data — never identifiable patient records.</div>
+        </div>
+      </div>
+
+      <!-- ── S4: Legal Basis ── -->
+      <div class="card" id="s4">
+        <div class="section-head">
+          <div class="section-icon amber">⚖️</div>
+          <div class="section-meta">
+            <span class="section-num">Section 04</span>
+            <h2>Legal Basis for Processing (GDPR)</h2>
+          </div>
+        </div>
+        <p>Where the General Data Protection Regulation (GDPR) or equivalent legislation applies, we process your personal data on the following legal grounds:</p>
+        <ul>
+          <li><strong>Contractual Necessity (Art. 6(1)(b)):</strong> Processing is necessary to provide the App's services as agreed when you create an account.</li>
+          <li><strong>Legitimate Interests (Art. 6(1)(f)):</strong> Security monitoring, fraud prevention, product analytics, and model improvement — subject to balancing tests.</li>
+          <li><strong>Legal Obligation (Art. 6(1)(c)):</strong> Compliance with applicable healthcare, data protection, and tax regulations.</li>
+          <li><strong>Consent (Art. 6(1)(a) / Art. 9(2)(a)):</strong> For optional features and for processing Special Category (health) data where no other basis applies. You may withdraw consent at any time without affecting prior processing.</li>
+          <li><strong>Health Data Derogation (Art. 9(2)(h)):</strong> Processing of health data for the provision of healthcare management services by health professionals, subject to appropriate confidentiality obligations.</li>
+        </ul>
+      </div>
+
+      <!-- ── S5: Data Sharing ── -->
+      <div class="card" id="s5">
+        <div class="section-head">
+          <div class="section-icon red">🤝</div>
+          <div class="section-meta">
+            <span class="section-num">Section 05</span>
+            <h2>Data Sharing &amp; Disclosure</h2>
+          </div>
+        </div>
+        <div class="callout red">
+          <div class="callout-icon">🚫</div>
+          <div class="callout-body"><strong>We do NOT sell personal information.</strong> ProstoCalc does not sell, rent, or trade identifiable personal data or patient health data to any third party for any commercial purpose.</div>
+        </div>
+        <p>We may share data only in the following limited circumstances:</p>
+        <ul>
+          <li><strong>Within Your Clinic:</strong> Data is shared among authorised staff within your clinic based on role-based access controls configured by the administrator.</li>
+          <li><strong>Service Providers (Sub-processors):</strong> We engage vetted third-party providers (e.g., cloud hosting, email delivery) under Data Processing Agreements (DPAs) that prohibit them from using your data for their own purposes. A list of sub-processors is available on request.</li>
+          <li><strong>Insurance &amp; Billing:</strong> Authorised insurance claims data may be shared with named insurers strictly for billing purposes and only with practitioner authorisation.</li>
+          <li><strong>Legal Requirements:</strong> We may disclose data to comply with a valid court order, subpoena, legal process, or governmental request, or to protect the rights, property, or safety of ProstoCalc, our users, or the public.</li>
+          <li><strong>Business Transfer:</strong> In the event of a merger, acquisition, or sale of assets, personal data may be transferred subject to the acquirer assuming equivalent privacy obligations. We will notify affected users.</li>
+          <li><strong>Aggregated Research Data:</strong> Fully anonymised and aggregated statistical data (no identifiable individuals) may be used in published research or product analytics.</li>
+          <li><strong>With Your Explicit Consent:</strong> In any other case, only with your prior written consent.</li>
+        </ul>
+      </div>
+
+      <!-- ── S6: AI/ML ── -->
+      <div class="card" id="s6">
+        <div class="section-head">
+          <div class="section-icon teal">🧠</div>
+          <div class="section-meta">
+            <span class="section-num">Section 06</span>
+            <h2>AI / ML Architecture &amp; Automated Processing</h2>
+          </div>
+        </div>
+        <p>ProstoCalc uses a <strong>6-algorithm ensemble engine</strong> for clinical cost intelligence. We are transparent about automated decision-making as required under GDPR Article 22 and equivalent laws.</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Algorithm</th><th>Purpose</th><th>Data Used</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Multivariate Regression</strong></td><td>Deterministic non-linear cost modeling</td><td>Complexity score, material grade</td></tr>
+            <tr><td><strong>GBDT (Gradient Boosted Decision Trees)</strong></td><td>Pattern recognition for age-complexity interactions</td><td>Patient age, procedure type</td></tr>
+            <tr><td><strong>Monte Carlo Simulation</strong></td><td>Uncertainty quantification (10,000 simulations per estimate)</td><td>Complication risk factors</td></tr>
+            <tr><td><strong>Bayesian Inference</strong></td><td>Evidence-based estimation updates</td><td>Age, hygiene score, urgency</td></tr>
+            <tr><td><strong>KNN (K-Nearest Neighbour)</strong></td><td>Historical treatment pattern matching</td><td>7-dimensional similarity matrix</td></tr>
+            <tr><td><strong>Meta-Learner</strong></td><td>Confidence-weighted aggregation of all outputs</td><td>All algorithm outputs</td></tr>
+          </tbody>
+        </table>
+        <p><strong>AI Justification Engine:</strong> We integrate Llama-3 and HuggingFace Transformers to generate "Neural Clinical Justifications" — converting numerical estimation data into professional-grade clinical report language. These outputs are always reviewed and approved by the practitioner before being shared with patients.</p>
+        <div class="callout blue">
+          <div class="callout-icon">ℹ️</div>
+          <div class="callout-body"><strong>Automated Decision-Making Safeguards.</strong> Cost estimates generated by ProstoCalc are <em>decision-support tools</em>, not final binding decisions. No automated output directly determines patient treatment without human practitioner review. You have the right to request a manual review of any estimate. Model training uses only anonymised, aggregated historical data — never identifiable patient records.</div>
+        </div>
+      </div>
+
+      <!-- ── S7: Security ── -->
+      <div class="card" id="s7">
+        <div class="section-head">
+          <div class="section-icon">🔐</div>
+          <div class="section-meta">
+            <span class="section-num">Section 07</span>
+            <h2>Data Security</h2>
+          </div>
+        </div>
+        <p>We implement industry-standard and healthcare-grade security controls to protect your data from unauthorised access, disclosure, alteration, and destruction.</p>
+
+        <h3>Technical Safeguards</h3>
+        <ul>
+          <li><strong>Encryption in transit:</strong> TLS 1.2 / 1.3 for all API communications</li>
+          <li><strong>Encryption at rest:</strong> AES-256 for database storage and backups</li>
+          <li><strong>Database security:</strong> Parameterised queries (SQL injection protection), least-privilege DB accounts</li>
+          <li><strong>Authentication:</strong> Token-based session management, secure password hashing (bcrypt), optional two-factor authentication (2FA)</li>
+          <li><strong>Input validation:</strong> Server-side validation and sanitisation of all user inputs</li>
+          <li><strong>iOS-specific:</strong> Data stored in iOS Keychain (credentials), encrypted Core Data store, App Transport Security (ATS) enforced</li>
+        </ul>
+
+        <h3>Organisational Safeguards</h3>
+        <ul>
+          <li>Role-based access control (RBAC) — staff only access data required for their role</li>
+          <li>Confidentiality agreements for all employees and contractors</li>
+          <li>Regular security audits and penetration testing</li>
+          <li>Incident response plan with defined breach notification procedures</li>
+          <li>Data minimisation principles applied throughout the product lifecycle</li>
+        </ul>
+
+        <div class="callout amber">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body"><strong>Breach Notification.</strong> In the event of a personal data breach that is likely to result in a high risk to individuals, we will notify affected users and the relevant supervisory authority within 72 hours of becoming aware, in accordance with GDPR Article 33/34 and applicable HIPAA Breach Notification Rule requirements.</div>
+        </div>
+        <p>No method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your data, we cannot guarantee absolute security. You are responsible for keeping your account credentials confidential.</p>
+      </div>
+
+      <!-- ── S8: Retention ── -->
+      <div class="card" id="s8">
+        <div class="section-head">
+          <div class="section-icon amber">🗃️</div>
+          <div class="section-meta">
+            <span class="section-num">Section 08</span>
+            <h2>Data Retention</h2>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Data Category</th><th>Retention Period</th><th>Reason</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Account data</strong></td><td>Duration of account + 30 days after deletion request</td><td>Service provision; legal obligation</td></tr>
+            <tr><td><strong>Patient dental records</strong></td><td>As required by local healthcare regulations (commonly 7–10 years)</td><td>Healthcare regulatory compliance</td></tr>
+            <tr><td><strong>Treatment estimate logs</strong></td><td>3 years (anonymised after 12 months)</td><td>ML model improvement; audit trail</td></tr>
+            <tr><td><strong>Security / access logs</strong></td><td>12 months</td><td>Security monitoring; incident response</td></tr>
+            <tr><td><strong>Crash &amp; analytics data</strong></td><td>90 days</td><td>Product improvement</td></tr>
+            <tr><td><strong>Backups</strong></td><td>Up to 90 days (rolling)</td><td>Disaster recovery</td></tr>
+          </tbody>
+        </table>
+        <p>When data is no longer required, it is securely deleted or irreversibly anonymised. You may request early deletion subject to applicable legal hold obligations.</p>
+      </div>
+
+      <!-- ── S9: Your Rights ── -->
+      <div class="card" id="s9">
+        <div class="section-head">
+          <div class="section-icon teal">👤</div>
+          <div class="section-meta">
+            <span class="section-num">Section 09</span>
+            <h2>Your Privacy Rights</h2>
+          </div>
+        </div>
+        <p>Depending on your jurisdiction, you may have the following rights. To exercise any right, contact us at <a href="mailto:prostocalc.otp@gmail.com">prostocalc.otp@gmail.com</a>. We will respond within 30 days (GDPR: within 1 month, extendable by 2 months for complex requests).</p>
+        <div class="rights-grid">
+          <div class="right-card">
+            <div class="rc-icon">👁️</div>
+            <h4>Access</h4>
+            <p>Request a copy of all personal data we hold about you (data subject access request).</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">✏️</div>
+            <h4>Rectification</h4>
+            <p>Request correction of inaccurate or incomplete personal data.</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">🗑️</div>
+            <h4>Erasure</h4>
+            <p>Request deletion of your data ("right to be forgotten"), subject to legal hold obligations.</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">⏸️</div>
+            <h4>Restriction</h4>
+            <p>Request we restrict processing of your data while a complaint is being resolved.</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">📤</div>
+            <h4>Portability</h4>
+            <p>Receive your personal data in a structured, machine-readable format (JSON/CSV).</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">🙅</div>
+            <h4>Objection</h4>
+            <p>Object to processing based on legitimate interests, including profiling.</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">🤖</div>
+            <h4>Automated Decisions</h4>
+            <p>Request human review of any significant decision made by automated processing.</p>
+          </div>
+          <div class="right-card">
+            <div class="rc-icon">↩️</div>
+            <h4>Withdraw Consent</h4>
+            <p>Withdraw previously given consent at any time without penalty, for future processing only.</p>
+          </div>
+        </div>
+        <div class="callout blue" style="margin-top:20px;">
+          <div class="callout-icon">🏛️</div>
+          <div class="callout-body"><strong>Right to Lodge a Complaint.</strong> If you are in the EU/EEA, you have the right to lodge a complaint with your local Data Protection Authority (DPA). In India, complaints may be directed to the Data Protection Board under the Digital Personal Data Protection Act, 2023 (DPDPA).</div>
+        </div>
+      </div>
+
+      <!-- ── S10: Children ── -->
+      <div class="card" id="s10">
+        <div class="section-head">
+          <div class="section-icon red">👶</div>
+          <div class="section-meta">
+            <span class="section-num">Section 10</span>
+            <h2>Children's Privacy</h2>
+          </div>
+        </div>
+        <p><strong>ProstoCalc is not directed at, and is not intended for use by, individuals under the age of 18.</strong> The App is a professional dental practice management tool restricted to licensed practitioners and their authorised adult staff.</p>
+        <p>In the context of patient records, minors may be registered as <em>patients</em> by their practitioner. Such records are handled with the same or greater level of protection as adult records and in compliance with applicable children's data protection laws. Parental/guardian consent applies where required by law.</p>
+        <p>We do not knowingly create accounts for or collect personal information directly from children under 13 (or the applicable age of digital consent in your jurisdiction). If we become aware that such data has been collected without appropriate consent, we will delete it promptly.</p>
+        <div class="callout amber">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body">If you believe a child has provided personal information to us without appropriate consent, please contact us immediately at <a href="mailto:prostocalc.otp@gmail.com">prostocalc.otp@gmail.com</a>.</div>
+        </div>
+      </div>
+
+      <!-- ── S11: Apple / App Stores ── -->
+      <div class="card" id="s11">
+        <div class="section-head">
+          <div class="section-icon">📱</div>
+          <div class="section-meta">
+            <span class="section-num">Section 11</span>
+            <h2>Apple App Store, Google Play &amp; Platform-Specific Disclosures</h2>
+          </div>
+        </div>
+
+        <h3>Apple App Store — Privacy Nutrition Label Disclosures</h3>
+        <p>In accordance with Apple's App Privacy requirements, the following data types are used by ProstoCalc:</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Data Type</th><th>Collected</th><th>Used For</th><th>Linked to Identity</th><th>Tracking</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Name</td><td>Yes</td><td>App functionality</td><td>Yes</td><td>No</td></tr>
+            <tr><td>Email Address</td><td>Yes</td><td>App functionality, account management</td><td>Yes</td><td>No</td></tr>
+            <tr><td>Phone Number</td><td>Yes (optional)</td><td>App functionality</td><td>Yes</td><td>No</td></tr>
+            <tr><td>Health &amp; Fitness (Dental Records)</td><td>Yes</td><td>App functionality (core feature)</td><td>Yes</td><td>No</td></tr>
+            <tr><td>User Content (Clinical Notes)</td><td>Yes</td><td>App functionality</td><td>Yes</td><td>No</td></tr>
+            <tr><td>Device ID (IDFV)</td><td>Yes</td><td>Analytics, security</td><td>No</td><td>No</td></tr>
+            <tr><td>Crash Data</td><td>Yes</td><td>App functionality (bug fixes)</td><td>No</td><td>No</td></tr>
+            <tr><td>Product Interaction</td><td>Yes</td><td>Analytics (aggregated)</td><td>No</td><td>No</td></tr>
+          </tbody>
+        </table>
+        <div class="callout teal">
+          <div class="callout-icon">✅</div>
+          <div class="callout-body"><strong>No Third-Party Advertising.</strong> ProstoCalc does not use data to track users across apps or websites for advertising, does not share data with data brokers, and does not display third-party advertisements. The App Tracking Transparency (ATT) framework permission is not requested because we do not engage in cross-app tracking.</div>
+        </div>
+
+        <h3>iOS Permissions Requested</h3>
+        <ul>
+          <li><strong>Camera (Optional):</strong> To capture patient photographs for records — only accessed when you explicitly tap the camera button. <em>Never accessed in background.</em></li>
+          <li><strong>Photo Library (Optional):</strong> To attach existing images to patient records — only accessed upon explicit user action.</li>
+          <li><strong>Notifications (Optional):</strong> For appointment reminders and clinical alerts — only sent with your explicit permission.</li>
+          <li><strong>Face ID / Touch ID (Optional):</strong> For secure biometric app unlock — biometric data never leaves your device and is processed entirely by iOS.</li>
+        </ul>
+        <p>All permissions are optional unless noted and can be revoked at any time in <strong>iOS Settings → ProstoCalc</strong>. Revoking optional permissions does not affect core app functionality.</p>
+
+        <h3>Google Play — Data Safety</h3>
+        <p>The Google Play Data Safety form is kept current and reflects the data practices described in this policy. We do not share personal or sensitive data with third parties for advertising. Location data is not collected.</p>
+      </div>
+
+      <!-- ── S12: Third Parties ── -->
+      <div class="card" id="s12">
+        <div class="section-head">
+          <div class="section-icon amber">🔗</div>
+          <div class="section-meta">
+            <span class="section-num">Section 12</span>
+            <h2>Third-Party Services &amp; Sub-Processors</h2>
+          </div>
+        </div>
+        <p>ProstoCalc may integrate with the following categories of third-party services to deliver its features. Each sub-processor is contractually bound to process data only on our instructions and under appropriate security standards.</p>
+        <ul>
+          <li><strong>Cloud Infrastructure:</strong> Server hosting and database storage (data stored within your selected region where possible)</li>
+          <li><strong>AI / ML Inference:</strong> HuggingFace Transformers API (used for Neural Clinical Justification generation; inputs are pseudonymised before transmission)</li>
+          <li><strong>Transactional Email:</strong> Account verification and notification emails</li>
+          <li><strong>Crash Reporting:</strong> App stability monitoring (crash data only; no personal data)</li>
+          <li><strong>Analytics:</strong> Aggregated, anonymised usage analytics for product improvement</li>
+        </ul>
+        <div class="callout blue">
+          <div class="callout-icon">📩</div>
+          <div class="callout-body">A full, up-to-date list of sub-processors is available upon written request to <a href="mailto:prostocalc.otp@gmail.com">prostocalc.otp@gmail.com</a>. We will notify you of material changes to our sub-processor list with at least 14 days' notice.</div>
+        </div>
+        <p>Our App may contain links to third-party websites (e.g., help documentation, insurance portals). We are not responsible for the privacy practices of such third parties. We encourage you to review their respective privacy policies.</p>
+      </div>
+
+      <!-- ── S13: Cookies ── -->
+      <div class="card" id="s13">
+        <div class="section-head">
+          <div class="section-icon">🍪</div>
+          <div class="section-meta">
+            <span class="section-num">Section 13</span>
+            <h2>Cookies &amp; Tracking Technologies</h2>
+          </div>
+        </div>
+        <p>The <strong>web version</strong> of ProstoCalc uses the following cookies and similar technologies:</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Category</th><th>Purpose</th><th>Can be disabled?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Strictly Necessary</strong></td><td>Session authentication, CSRF protection, load balancing. Without these, the App cannot function.</td><td>No</td></tr>
+            <tr><td><strong>Functional</strong></td><td>Remembering your language, UI preferences, and recently accessed records for ease of use.</td><td>Yes (with reduced functionality)</td></tr>
+            <tr><td><strong>Analytics</strong></td><td>Aggregated, anonymised usage statistics to improve the product.</td><td>Yes</td></tr>
+          </tbody>
+        </table>
+        <p>We do <strong>not</strong> use advertising cookies, cross-site tracking cookies, or social media tracking pixels. You can manage cookie preferences in the App's Settings or via your browser settings. Disabling strictly necessary cookies will prevent you from logging in.</p>
+        <p>The <strong>iOS and Android native apps</strong> do not use browser cookies. They use secure, app-local session tokens stored in the device Keychain (iOS) or EncryptedSharedPreferences (Android).</p>
+      </div>
+
+      <!-- ── S14: International Transfers ── -->
+      <div class="card" id="s14">
+        <div class="section-head">
+          <div class="section-icon">🌍</div>
+          <div class="section-meta">
+            <span class="section-num">Section 14</span>
+            <h2>International Data Transfers</h2>
+          </div>
+        </div>
+        <p>ProstoCalc may store and process your data on servers located outside your country of residence. Where data is transferred from the European Economic Area (EEA), United Kingdom, or other jurisdictions with data transfer restrictions, we ensure appropriate safeguards are in place, including:</p>
+        <ul>
+          <li><strong>Standard Contractual Clauses (SCCs):</strong> EU-approved contract terms with all non-EEA sub-processors</li>
+          <li><strong>Adequacy Decisions:</strong> Where the European Commission has recognised the destination country as providing adequate protection</li>
+          <li><strong>Binding Corporate Rules:</strong> Where applicable for intra-group transfers</li>
+        </ul>
+        <p>For users in India: data may be processed in data centres located in India or in other countries. We apply the same security standards regardless of location and comply with applicable provisions of the Digital Personal Data Protection Act, 2023 (DPDPA).</p>
+      </div>
+
+      <!-- ── S15: Do Not Sell ── -->
+      <div class="card" id="s15">
+        <div class="section-head">
+          <div class="section-icon teal">🚫</div>
+          <div class="section-meta">
+            <span class="section-num">Section 15</span>
+            <h2>Do Not Sell or Share My Personal Information</h2>
+          </div>
+        </div>
+        <div class="callout teal">
+          <div class="callout-icon">✅</div>
+          <div class="callout-body"><strong>ProstoCalc does not sell or share personal information for cross-context behavioural advertising.</strong> This policy applies to all users, including California residents under the CCPA/CPRA. No action is required by you to opt out — this is our default practice.</div>
+        </div>
+        <h3>California Residents (CCPA / CPRA)</h3>
+        <p>In addition to the rights in Section 9, California residents have the right to:</p>
+        <ul>
+          <li>Know the categories and specific pieces of personal information collected about them</li>
+          <li>Know whether personal information is sold or disclosed and to whom</li>
+          <li>Opt out of the sale or sharing of personal information (not applicable — we do not sell or share)</li>
+          <li>Non-discrimination for exercising CCPA rights</li>
+          <li>Limit use and disclosure of sensitive personal information</li>
+        </ul>
+        <p>To exercise California rights, contact us at <a href="mailto:prostocalc.otp@gmail.com">prostocalc.otp@gmail.com</a> with the subject line "CCPA Request".</p>
+      </div>
+
+      <!-- ── S16: Changes ── -->
+      <div class="card" id="s16">
+        <div class="section-head">
+          <div class="section-icon">🔄</div>
+          <div class="section-meta">
+            <span class="section-num">Section 16</span>
+            <h2>Changes to This Policy</h2>
+          </div>
+        </div>
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or for other operational reasons. We will update the "Last Updated" date at the top of this page.</p>
+        <p><strong>For material changes</strong> (e.g., new data categories collected, new sharing arrangements, changes to your rights), we will:</p>
+        <ul>
+          <li>Send an email notification to the address on your account, and/or</li>
+          <li>Display a prominent in-app banner at next login requiring acknowledgment</li>
+          <li>Provide at least 30 days' notice before the changes take effect</li>
+        </ul>
+        <p>Your continued use of ProstoCalc after the effective date of a revised policy constitutes your acceptance of the changes. The current version of this policy is always accessible in the App under <strong>Settings → Privacy Policy</strong> and at our website.</p>
+      </div>
+
+      <!-- ── S17: Contact ── -->
+      <div id="s17">
+        <div class="contact-card">
+          <h2>📬 Contact Us &amp; Data Protection</h2>
+          <p>For any questions, concerns, or requests related to this Privacy Policy or our data practices — including data subject access requests — please contact us using the details below. We aim to respond within 30 days.</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <span>📧</span>
+              <span class="ci-label">Email</span>
+              <a href="mailto:prostocalc.otp@gmail.com">prostocalc.otp@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <span>🌐</span>
+              <span class="ci-label">Website</span>
+              <a href="http://14.139.187.229:8099/" target="_blank" rel="noopener">http://14.139.187.229:8099/</a>
+            </div>
+            <div class="contact-item">
+              <span>📍</span>
+              <span class="ci-label">Address</span>
+              <span style="color: var(--ink-muted);">[Clinic Address — Update Before Submission]</span>
+            </div>
+            <div class="contact-item">
+              <span>⏱️</span>
+              <span class="ci-label">Response</span>
+              <span style="color: var(--ink-muted);">Within 30 days of receipt of request</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Footer ── -->
+      <div class="doc-footer">
+        <p>ProstoCalc — Clinical Cost Intelligence Platform for Modern Dentistry</p>
+        <p>Privacy Policy · Last Updated: April 15, 2026 · Version 2.0</p>
+        <p style="margin-top:8px; font-size:11.5px;">This policy applies to the ProstoCalc iOS App, Android App, and Web Application.<br>Designed to meet Apple App Store, Google Play, GDPR, HIPAA, CCPA, and DPDPA requirements.</p>
+      </div>
+
+    </div>
+  </body>
+</html>
