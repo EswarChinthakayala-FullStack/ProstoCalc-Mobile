@@ -37,3 +37,4 @@ __pycache__/
 ai_server/
 server/
 Frontend/
+backend_deprecated/
