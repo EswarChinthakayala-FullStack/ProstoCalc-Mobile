@@ -296,6 +296,13 @@ struct CreateAccountView: View {
                         
                         // Bottom Spacer
                         Spacer().frame(height: 40)
+                        
+                        // Privacy Policy Link
+                        HStack(spacing: 4) {
+                            Link("Privacy Policy", destination: URL(string: "https://eswarchinthakayala-fullstack.github.io/ProstoCalc-Mobile/index.html")!)
+                        }
+                        .font(.system(size: 10))
+                        .foregroundColor(.blue.opacity(0.7))
                     }
                     .padding(.top, 60)
                     .offset(y: animateEntry ? 0 : 40)

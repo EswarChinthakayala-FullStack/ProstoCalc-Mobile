@@ -331,8 +331,15 @@ struct PatientLoginView: View {
                         .foregroundColor(.gray.opacity(0.4))
                     }
                     .padding(.bottom, 20)
-                }
-                .padding(.top, 60)
+                        
+                        // Privacy Policy Link
+                        HStack(spacing: 4) {
+                            Link("Privacy Policy", destination: URL(string: "https://eswarchinthakayala-fullstack.github.io/ProstoCalc-Mobile/index.html")!)
+                        }
+                        .font(.system(size: 10))
+                        .foregroundColor(.blue.opacity(0.7))
+                    }
+                    .padding(.top, 60)
             }
         }
         .toastView(toast: $activeToast)

@@ -290,6 +290,13 @@ struct DentistCreateAccountView: View {
                     .padding(.top, 60)
                     .offset(y: animateEntry ? 0 : 40)
                     .opacity(animateEntry ? 1 : 0)
+                    
+                    // Privacy Policy Link
+                    HStack(spacing: 4) {
+                        Link("Privacy Policy", destination: URL(string: "https://eswarchinthakayala-fullstack.github.io/ProstoCalc-Mobile/index.html")!)
+                    }
+                    .font(.system(size: 10))
+                    .foregroundColor(.teal.opacity(0.7))
                 }
             }
         }
